@@ -23,12 +23,29 @@ namespace MetalPrices.Api.Controllers
             return new string[] { "GoldPricesController is working" };
         }
 
+
+        // GET: GoldPrices/StartDownloadingDaily
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        public IActionResult StartDownloadingDaily()
+        {
+            _goldPricesClient.StartDownloadingDailyGoldPrices();
+
+            return Accepted();
+        }
+
         // GET: GoldPrices/Daily
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Daily()
         {
-            var dailyGoldPrices = _goldPricesClient.GetDailyGoldPrices();
+            var dailyGoldPrices = _goldPricesClient.DailyGoldPrices;
+
+            if (string.IsNullOrEmpty(dailyGoldPrices))
+            {
+                return NoContent();
+            }
 
             return Ok(dailyGoldPrices);
         }

@@ -24,7 +24,7 @@ namespace MetalPrices.Api
                 .AddNewtonsoftJson(x => 
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-            services.AddTransient<IGoldPricesClient, GoldPricesClient>();            
+            services.AddSingleton<IGoldPricesClient, GoldPricesClient>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
