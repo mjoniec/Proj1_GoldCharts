@@ -24,3 +24,4 @@
 /MetalPrices.Api/bin/Debug/netcoreapp3.0
 /.vs/MetalPrices/config/applicationhost.config
 /MetalPrices.Services/obj
+/MetalPrices.Services/bin/Debug/netcoreapp3.0
