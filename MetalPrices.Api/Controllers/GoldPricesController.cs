@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MetalPrices.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class GoldPricesController : ControllerBase
     {
@@ -15,16 +15,16 @@ namespace MetalPrices.Api.Controllers
         {
             _goldPricesClient = goldPricesClient;
         }
-
-        // GET: api/GoldPrices
+        //https://localhost:44359/GoldPrices
+        // GET: 
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "GoldPricesController is working" };
         }
 
-        // GET: api/GoldPrices/5
-        [HttpGet(Name = "GetDaily")]
+        // GET: 
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetDaily()
         {

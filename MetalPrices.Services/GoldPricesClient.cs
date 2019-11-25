@@ -2,7 +2,7 @@
 
 namespace MetalPrices.Services
 {
-    public class GoldPricesClient : ApiClient
+    public class GoldPricesClient : ApiClient, IGoldPricesClient
     {
         public async Task<string> GetDailyGoldPrices()
         {
