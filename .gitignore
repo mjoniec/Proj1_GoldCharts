@@ -11,3 +11,16 @@
 /.vs/MetalPrices/v16
 /.vs/MetalPrices/DesignTimeBuild/.dtbcache
 /MetalPrices.Api/obj
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/Properties/launchSettings.json
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/Properties
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/MetalPrices.Api.runtimeconfig.json
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/MetalPrices.Api.runtimeconfig.dev.json
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/MetalPrices.Api.pdb
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/MetalPrices.Api.exe
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/MetalPrices.Api.dll
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/MetalPrices.Api.deps.json
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/appsettings.json
+/MetalPrices.Api/bin/Debug/netcoreapp3.0/appsettings.Development.json
+/MetalPrices.Api/bin/Debug/netcoreapp3.0
+/.vs/MetalPrices/config/applicationhost.config
+/MetalPrices.Services/obj
