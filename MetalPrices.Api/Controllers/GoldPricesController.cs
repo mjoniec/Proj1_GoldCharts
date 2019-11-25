@@ -15,18 +15,18 @@ namespace MetalPrices.Api.Controllers
         {
             _goldPricesClient = goldPricesClient;
         }
-        //https://localhost:44359/GoldPrices
-        // GET: 
+
+        // GET: GoldPrices
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "GoldPricesController is working" };
         }
 
-        // GET: 
+        // GET: GoldPrices/Daily
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult GetDaily()
+        public IActionResult Daily()
         {
             var dailyGoldPrices = _goldPricesClient.GetDailyGoldPrices();
 
