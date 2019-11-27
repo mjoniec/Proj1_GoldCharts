@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MetalPrices.Services;
+using MetalPrices.Services.Gold;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +9,9 @@ namespace MetalPrices.Api.Controllers
     [ApiController]
     public class GoldPricesController : ControllerBase
     {
-        IGoldPricesClient _goldPricesClient;
+        IMetalPricesService _goldPricesClient;
 
-        public GoldPricesController(IGoldPricesClient goldPricesClient)
+        public GoldPricesController(IMetalPricesService goldPricesClient)
         {
             _goldPricesClient = goldPricesClient;
         }
@@ -29,7 +29,7 @@ namespace MetalPrices.Api.Controllers
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         public IActionResult StartDownloadingDaily()
         {
-            _goldPricesClient.StartDownloadingDailyGoldPrices();
+            _goldPricesClient.StartPreparingDailyPrices();
 
             return Accepted();
         }
@@ -40,9 +40,9 @@ namespace MetalPrices.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Daily()
         {
-            var dailyGoldPrices = _goldPricesClient.DailyGoldPrices;
+            var dailyGoldPrices = _goldPricesClient.DailyPrices();
 
-            if (string.IsNullOrEmpty(dailyGoldPrices))
+            if (dailyGoldPrices == null)
             {
                 return NoContent();
             }
