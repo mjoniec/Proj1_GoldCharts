@@ -25,3 +25,5 @@
 /.vs/MetalPrices/config/applicationhost.config
 /MetalPrices.Services/obj
 /MetalPrices.Services/bin/Debug/netcoreapp3.0
+/.vs/MetalPrices/v15/Server/sqlite3
+/.vs/MetalPrices/v15

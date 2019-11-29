@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MetalPrices.Services.Gold
+namespace MetalsPrices.Services.Gold
 {
     public interface IMetalPricesService
     {

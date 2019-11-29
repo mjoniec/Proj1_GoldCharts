@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using MetalPrices.Services.Gold;
+using MetalsPrices.Services.Gold;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MetalPrices.Api.Controllers
+namespace MetalsPrices.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]

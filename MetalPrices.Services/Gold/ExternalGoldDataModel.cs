@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace MetalPrices.Services.Gold
+namespace MetalsPrices.Services.Gold
 {
     internal class ExternalGoldDataModel
     {

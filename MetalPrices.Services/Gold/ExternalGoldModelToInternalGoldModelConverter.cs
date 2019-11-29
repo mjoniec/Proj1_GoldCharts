@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MetalPrices.Services.Gold
+namespace MetalsPrices.Services.Gold
 {
     internal class ExternalGoldModelToInternalGoldModelConverter
     {
