@@ -20,7 +20,7 @@ namespace MetalsPrices.Services.Gold
             await _goldPricesExternalApiClient.StartDownloadingDailyGoldPrices();
         }
 
-        public Model.MetalPrices DailyPrices()
+        public MetalPrices.Model.MetalPrices DailyPrices()
         {
             var dailyPrices = _goldPricesExternalApiClient.DailyPrices;
 

@@ -6,12 +6,12 @@ namespace MetalsPrices.Services.Gold
 {
     internal class ExternalGoldModelToInternalGoldModelConverter
     {
-        internal Model.MetalPrices ConvertExternalModel(ExternalGoldDataModel externalGoldDataModel)
+        internal MetalPrices.Model.MetalPrices ConvertExternalModel(ExternalGoldDataModel externalGoldDataModel)
         {
-            return new Model.MetalPrices
+            return new MetalPrices.Model.MetalPrices
             {
                 Prices = GetDailyGoldPricesFromExternalData(externalGoldDataModel.Data)
-                .Select(d => new Model.MetalPriceDay
+                .Select(d => new MetalPrices.Model.MetalPriceDay
                 {
                     Date = d.Key,
                     Price = d.Value
