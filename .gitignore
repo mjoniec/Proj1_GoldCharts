@@ -27,3 +27,9 @@
 /MetalPrices.Services/bin/Debug/netcoreapp3.0
 /.vs/MetalPrices/v15/Server/sqlite3
 /.vs/MetalPrices/v15
+/MetalsPrices.Api/bin/Debug/netcoreapp3.0
+/MetalsPrices.Api/obj
+/MetalsPrices.Api/Properties
+/MetalsPrices.Services/obj
+/MetalsPrices.Services/bin/Debug/netcoreapp3.0
+/.vs/MetalsPrices

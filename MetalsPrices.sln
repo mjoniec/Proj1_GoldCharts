@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalPrices.Api", "MetalPrices.Api\MetalPrices.Api.csproj", "{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Api", "MetalsPrices.Api\MetalsPrices.Api.csproj", "{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalPrices.Services", "MetalPrices.Services\MetalPrices.Services.csproj", "{2C506A67-F677-44F6-9B54-58B75430C996}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Services", "MetalsPrices.Services\MetalsPrices.Services.csproj", "{2C506A67-F677-44F6-9B54-58B75430C996}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
