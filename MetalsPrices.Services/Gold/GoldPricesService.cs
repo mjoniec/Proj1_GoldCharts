@@ -15,12 +15,12 @@ namespace MetalsPrices.Services.Gold
             _externalGoldModelToInternalGoldModelConverter = new ExternalGoldModelToInternalGoldModelConverter();
         }
 
-        public async Task StartPreparingDailyPrices()
+        public async Task StartPreparingPrices()
         {
             await _goldPricesExternalApiClient.StartDownloadingDailyGoldPrices();
         }
 
-        public MetalPrices.Model.MetalPrices DailyPrices()
+        public MetalPrices.Model.MetalPrices Prices()
         {
             var dailyPrices = _goldPricesExternalApiClient.DailyPrices;
 

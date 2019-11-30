@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 
-namespace MetalsPrices.Services.Gold
+namespace MetalsPrices.Services
 {
     public interface IMetalPricesService
     {
-        Task StartPreparingDailyPrices();
-        MetalPrices.Model.MetalPrices DailyPrices();
+        Task StartPreparingPrices();
+        MetalPrices.Model.MetalPrices Prices();
     }
 }

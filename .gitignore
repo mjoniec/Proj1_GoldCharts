@@ -33,3 +33,6 @@
 /MetalsPrices.Services/obj
 /MetalsPrices.Services/bin/Debug/netcoreapp3.0
 /.vs/MetalsPrices
+/MetalsPrices.Api/bin/Release/netcoreapp3.0
+/MetalsPrices.Api/MetalsPrices.Api.csproj.user
+/MetalsPrices.Services/bin/Release/netcoreapp3.0

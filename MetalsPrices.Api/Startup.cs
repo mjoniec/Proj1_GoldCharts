@@ -1,3 +1,4 @@
+using MetalsPrices.Services;
 using MetalsPrices.Services.Gold;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
