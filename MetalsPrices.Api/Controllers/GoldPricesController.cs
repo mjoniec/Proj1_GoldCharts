@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MetalsPrices.Abstraction.MeralPricesServices;
+﻿using MetalsPrices.Abstraction.MeralPricesServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,26 +17,27 @@ namespace MetalsPrices.Api.Controllers
 
         // GET: GoldPrices
         [HttpGet]
-        public IEnumerable<string> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult Get()
         {
-            return new string[] { "GoldPricesController is working" };
+            return Ok("GoldPricesController is working");
         }
 
-        // GET: GoldPrices/StartDownloadingDaily
+        // GET: GoldPrices/StartPreparingPrices
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
-        public IActionResult StartDownloadingDaily()
+        public IActionResult StartPreparingPrices()
         {
             _metalPricesService.StartPreparingPrices();
 
-            return Accepted();
+            return Accepted("Started preparing gold prices");
         }
 
-        // GET: GoldPrices/Daily
+        // GET: GoldPrices/Prices
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public IActionResult Daily()
+        public IActionResult Prices()
         {
             var dailyGoldPrices = _metalPricesService.GetPrices();
 
