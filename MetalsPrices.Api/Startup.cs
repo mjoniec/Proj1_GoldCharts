@@ -1,5 +1,5 @@
 using MetalsPrices.Abstraction.MeralPricesServices;
-using MetalsPrices.ExternalApiClients.Gold;
+using MetalsPrices.ExternalApi.Services.Gold;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

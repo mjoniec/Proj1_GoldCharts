@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MetalsPrices.Abstraction.MeralPricesServices\MetalsPrices.Abstraction.MeralPricesServices.csproj" />
-    <ProjectReference Include="..\MetalsPrices.Services\MetalsPrices.Services.csproj" />
+    <ProjectReference Include="..\MetalsPrices.ExternalApi.Services\MetalsPrices.ExternalApi.Services.csproj" />
   </ItemGroup>
 
 </Project>

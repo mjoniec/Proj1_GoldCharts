@@ -5,13 +5,11 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.Api", "MetalsPrices.Api\MetalsPrices.Api.csproj", "{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.Services", "MetalsPrices.Services\MetalsPrices.Services.csproj", "{2C506A67-F677-44F6-9B54-58B75430C996}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.ExternalApiClients", "MetalsPrices.ExternalApiClients\MetalsPrices.ExternalApiClients.csproj", "{4DD00E4B-6A87-42C7-82A2-85A7154EC2F7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Abstraction.MeralPricesServices", "MetalsPrices.Abstraction.MeralPricesServices\MetalsPrices.Abstraction.MeralPricesServices.csproj", "{2390C2FD-6E8C-4F87-A715-91DA4EAF8802}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Abstraction.MetalPricesDataProviders", "MetalsPrices.Abstraction.MetalPricesDataProviders\MetalsPrices.Abstraction.MetalPricesDataProviders.csproj", "{80E24F23-0700-4F69-A6C1-716D6EB29528}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.ExternalApi.Services", "MetalsPrices.ExternalApi.Services\MetalsPrices.ExternalApi.Services.csproj", "{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +21,6 @@ Global
 		{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C506A67-F677-44F6-9B54-58B75430C996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C506A67-F677-44F6-9B54-58B75430C996}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C506A67-F677-44F6-9B54-58B75430C996}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C506A67-F677-44F6-9B54-58B75430C996}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DD00E4B-6A87-42C7-82A2-85A7154EC2F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DD00E4B-6A87-42C7-82A2-85A7154EC2F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DD00E4B-6A87-42C7-82A2-85A7154EC2F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DD00E4B-6A87-42C7-82A2-85A7154EC2F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2390C2FD-6E8C-4F87-A715-91DA4EAF8802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2390C2FD-6E8C-4F87-A715-91DA4EAF8802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2390C2FD-6E8C-4F87-A715-91DA4EAF8802}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +29,10 @@ Global
 		{80E24F23-0700-4F69-A6C1-716D6EB29528}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E24F23-0700-4F69-A6C1-716D6EB29528}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E24F23-0700-4F69-A6C1-716D6EB29528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

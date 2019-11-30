@@ -44,3 +44,6 @@
 /MetalsPrices.Abstraction.MeralPricesServices/obj
 /MetalsPrices.Abstraction.MetalPricesDataProviders/bin/Debug/netcoreapp3.0
 /MetalsPrices.Abstraction.MetalPricesDataProviders/obj
+/MetalsPrices.ExternalApi.Services/bin/Debug/netcoreapp3.0
+/MetalsPrices.ExternalApi.Services/obj/Debug/netcoreapp3.0
+/MetalsPrices.ExternalApi.Services/obj
