@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MetalsPrices.Abstraction.MeralPricesServices\MetalsPrices.Abstraction.MeralPricesServices.csproj" />
     <ProjectReference Include="..\MetalsPrices.Abstraction.MetalPricesDataProviders\MetalsPrices.Abstraction.MetalPricesDataProviders.csproj" />
   </ItemGroup>
 

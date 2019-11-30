@@ -1,9 +1,10 @@
-﻿using MetalsPrices.Abstraction.MetalPricesDataProviders;
+﻿using MetalsPrices.Abstraction.MeralPricesServices;
+using MetalsPrices.Abstraction.MetalPricesDataProviders;
 using System.Threading.Tasks;
 
 namespace MetalsPrices.ExternalApiClients.Gold
 {
-    public class GoldPricesExternalApiService
+    public class GoldPricesExternalApiService : IMetalPricesService
     {
         private readonly IMetalsPricesDataProvider _goldPricesExternalApiClient;
         private readonly GuandlMetalDataJsonDeserializer _guandlMetalDataJsonDeserializer;

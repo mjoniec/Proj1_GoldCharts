@@ -1,5 +1,5 @@
 using MetalsPrices.Abstraction.MeralPricesServices;
-using MetalsPrices.Services.Gold;
+using MetalsPrices.ExternalApiClients.Gold;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +25,7 @@ namespace MetalsPrices.Api
                 .AddNewtonsoftJson(x => 
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-            services.AddSingleton<IMetalPricesService, GoldPricesService>();
+            services.AddSingleton<IMetalPricesService, GoldPricesExternalApiService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
