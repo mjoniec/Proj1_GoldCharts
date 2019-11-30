@@ -1,40 +1,28 @@
-﻿using MetalsPrices.ExternalApiClients;
-using MetalsPrices.ExternalApiClients.Gold;
+﻿using MetalsPrices.Abstraction.MeralPricesServices;
 using System.Threading.Tasks;
 
 namespace MetalsPrices.Services.Gold
 {
+    /// <summary>
+    /// This service is intended to be moved to a DB maintenance solution
+    /// </summary>
     public class GoldPricesService : IMetalPricesService
     {
-        private readonly IExternalApiClient _goldPricesExternalApiClient;
-        private readonly ExternalGoldDataJsonDeserializer _externalGoldDataJsonDeserializer;
-        private readonly ExternalGoldModelToInternalGoldModelConverter _externalGoldModelToInternalGoldModelConverter;
+        private readonly IMetalPricesService _metalPricesService;
 
-        public GoldPricesService()
+        public GoldPricesService(IMetalPricesService metalPricesService)
         {
-            _goldPricesExternalApiClient = new GoldPricesExternalApiClient();
-            _externalGoldDataJsonDeserializer = new ExternalGoldDataJsonDeserializer();
-            _externalGoldModelToInternalGoldModelConverter = new ExternalGoldModelToInternalGoldModelConverter();
+            _metalPricesService = metalPricesService;
         }
 
         public async Task StartPreparingPrices()
         {
-            await _goldPricesExternalApiClient.StartDownloadingPrices();
+            await _metalPricesService.StartPreparingPrices();
         }
 
         public MetalPrices.Model.MetalPrices GetPrices()
         {
-            var dailyPrices = _goldPricesExternalApiClient.Prices;
-
-            if (dailyPrices == null) return null;
-
-            var externalGoldModel = _externalGoldDataJsonDeserializer.DeserializeDataFromMessage(dailyPrices);
-
-            if (externalGoldModel == null) return null;
-
-            var goldModel = _externalGoldModelToInternalGoldModelConverter.ConvertExternalModel(externalGoldModel);
-
-            return goldModel;
+            return _metalPricesService.GetPrices();
         }
     }
 }

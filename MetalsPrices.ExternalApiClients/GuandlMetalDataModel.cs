@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace MetalsPrices.Services.Gold
+namespace MetalsPrices.ExternalApiClients
 {
-    internal class ExternalGoldDataModel
+    internal class GuandlMetalDataModel
     {
         //names comes from external api json structure
         internal const string NEWEST_AVAILALE_DATE = "newest_available_date";

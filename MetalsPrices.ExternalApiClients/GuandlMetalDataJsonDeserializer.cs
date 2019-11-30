@@ -3,29 +3,29 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MetalsPrices.Services.Gold
+namespace MetalsPrices.ExternalApiClients
 {
-    internal class ExternalGoldDataJsonDeserializer
+    internal class GuandlMetalDataJsonDeserializer
     {
-        internal ExternalGoldDataModel DeserializeDataFromMessage(string message)
+        internal GuandlMetalDataModel DeserializeDataFromMessage(string message)
         {
-            var goldDataJson = ExtractDailyGoldPricesFromExternalJson(message);
-            var goldData = JsonConvert.DeserializeObject<ExternalGoldDataModel>(goldDataJson);
+            var metalDataJson = ExtractDailyMetalPricesFromExternalJson(message);
+            var metalData = JsonConvert.DeserializeObject<GuandlMetalDataModel>(metalDataJson);
 
-            return goldData;
+            return metalData;
         }
 
-        private string ExtractDailyGoldPricesFromExternalJson(string message)
+        private string ExtractDailyMetalPricesFromExternalJson(string message)
         {
             var allChildren = AllChildren(JObject.Parse(message));
 
-            var goldData = allChildren
+            var data = allChildren
                 .First(c => c.Path.Contains("dataset"))
                 .Children<JObject>()
                 .First()
                 .ToString();
 
-            return goldData;
+            return data;
         }
 
         private static IEnumerable<JToken> AllChildren(JToken json)

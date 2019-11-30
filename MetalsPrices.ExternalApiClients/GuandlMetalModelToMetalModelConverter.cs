@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MetalsPrices.Services.Gold
+namespace MetalsPrices.ExternalApiClients
 {
-    internal class ExternalGoldModelToInternalGoldModelConverter
+    internal class GuandlMetalModelToMetalModelConverter
     {
-        internal MetalPrices.Model.MetalPrices ConvertExternalModel(ExternalGoldDataModel externalGoldDataModel)
+        internal MetalPrices.Model.MetalPrices ConvertExternalModel(GuandlMetalDataModel guandlMetalDataModel)
         {
             return new MetalPrices.Model.MetalPrices
             {
-                Prices = GetDailyGoldPricesFromExternalData(externalGoldDataModel.Data)
+                Prices = GetDailyGoldPricesFromExternalData(guandlMetalDataModel.Data)
                 .Select(d => new MetalPrices.Model.MetalPriceDateTime
                 {
                     DateTime = d.Key,

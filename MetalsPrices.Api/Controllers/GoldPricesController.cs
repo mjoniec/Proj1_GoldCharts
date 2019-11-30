@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MetalsPrices.Services;
+using MetalsPrices.Abstraction.MeralPricesServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

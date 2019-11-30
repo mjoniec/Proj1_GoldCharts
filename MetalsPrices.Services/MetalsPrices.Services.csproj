@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MetalsPrices.Abstraction.MeralPricesServices\MetalsPrices.Abstraction.MeralPricesServices.csproj" />
     <ProjectReference Include="..\MetalsPrices.ExternalApiClients\MetalsPrices.ExternalApiClients.csproj" />
   </ItemGroup>
 

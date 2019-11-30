@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MetalsPrices.Services
+namespace MetalsPrices.Abstraction.MeralPricesServices
 {
     public interface IMetalPricesService
     {
