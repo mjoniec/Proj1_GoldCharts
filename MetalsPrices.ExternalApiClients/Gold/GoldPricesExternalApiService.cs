@@ -1,4 +1,4 @@
-﻿using MetalsPrices.AbstractDataProviders;
+﻿using MetalsPrices.Abstraction.MetalPricesDataProviders;
 using System.Threading.Tasks;
 
 namespace MetalsPrices.ExternalApiClients.Gold

@@ -1,4 +1,4 @@
-﻿using MetalsPrices.AbstractDataProviders;
+﻿using MetalsPrices.Abstraction.MetalPricesDataProviders;
 using System.Net.Http;
 using System.Threading.Tasks;
 
