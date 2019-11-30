@@ -5,6 +5,6 @@ namespace MetalsPrices.Services
     public interface IMetalPricesService
     {
         Task StartPreparingPrices();
-        MetalPrices.Model.MetalPrices Prices();
+        MetalPrices.Model.MetalPrices GetPrices();
     }
 }

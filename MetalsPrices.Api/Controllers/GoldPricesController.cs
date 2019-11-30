@@ -39,7 +39,7 @@ namespace MetalsPrices.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Daily()
         {
-            var dailyGoldPrices = _metalPricesService.Prices();
+            var dailyGoldPrices = _metalPricesService.GetPrices();
 
             if (dailyGoldPrices == null)
             {

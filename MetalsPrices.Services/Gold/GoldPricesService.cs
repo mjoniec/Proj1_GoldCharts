@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using MetalsPrices.ExternalApiClients;
+using MetalsPrices.ExternalApiClients.Gold;
+using System.Threading.Tasks;
 
 namespace MetalsPrices.Services.Gold
 {
     public class GoldPricesService : IMetalPricesService
     {
-        private readonly GoldPricesExternalApiClient _goldPricesExternalApiClient;
+        private readonly IExternalApiClient _goldPricesExternalApiClient;
         private readonly ExternalGoldDataJsonDeserializer _externalGoldDataJsonDeserializer;
         private readonly ExternalGoldModelToInternalGoldModelConverter _externalGoldModelToInternalGoldModelConverter;
 
@@ -17,12 +19,12 @@ namespace MetalsPrices.Services.Gold
 
         public async Task StartPreparingPrices()
         {
-            await _goldPricesExternalApiClient.StartDownloadingDailyGoldPrices();
+            await _goldPricesExternalApiClient.StartDownloadingPrices();
         }
 
-        public MetalPrices.Model.MetalPrices Prices()
+        public MetalPrices.Model.MetalPrices GetPrices()
         {
-            var dailyPrices = _goldPricesExternalApiClient.DailyPrices;
+            var dailyPrices = _goldPricesExternalApiClient.Prices;
 
             if (dailyPrices == null) return null;
 

@@ -36,3 +36,5 @@
 /MetalsPrices.Api/bin/Release/netcoreapp3.0
 /MetalsPrices.Api/MetalsPrices.Api.csproj.user
 /MetalsPrices.Services/bin/Release/netcoreapp3.0
+/MetalsPrices.ExternalApiClients/obj
+/MetalsPrices.ExternalApiClients/bin/Debug/netcoreapp3.0

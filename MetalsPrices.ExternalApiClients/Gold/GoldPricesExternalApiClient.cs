@@ -1,25 +1,26 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MetalsPrices.Services.Gold
+namespace MetalsPrices.ExternalApiClients.Gold
 {
-    public class GoldPricesExternalApiClient
+    public class GoldPricesExternalApiClient : IExternalApiClient
     {
         private readonly HttpClient _client;
+        private string _dailyPrices; //different name provides additional info on structure
 
-        public string DailyPrices { get; private set; }
+        public string Prices => _dailyPrices;
 
         public GoldPricesExternalApiClient()
         {
             _client = HttpClientFactory.Create();
         }
 
-        public async Task StartDownloadingDailyGoldPrices()
+        public async Task StartDownloadingPrices()
         {
             var httpResponse = await _client.GetAsync("https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_AUD.json");
             var httpContent = await httpResponse.Content.ReadAsStringAsync();
 
-            DailyPrices = httpContent;
+            _dailyPrices = httpContent;
         }
     }
 }
