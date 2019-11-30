@@ -11,9 +11,9 @@ namespace MetalsPrices.Services.Gold
             return new MetalPrices.Model.MetalPrices
             {
                 Prices = GetDailyGoldPricesFromExternalData(externalGoldDataModel.Data)
-                .Select(d => new MetalPrices.Model.MetalPriceDay
+                .Select(d => new MetalPrices.Model.MetalPriceDateTime
                 {
-                    Date = d.Key,
+                    DateTime = d.Key,
                     Price = d.Value
                 }).ToList()
             };
