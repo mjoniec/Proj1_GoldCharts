@@ -30,7 +30,7 @@ namespace MetalsPrices.Api.Controllers
         {
             _metalPricesService.StartPreparingPrices();
 
-            return Accepted("Started preparing gold prices");
+            return Accepted("https://metalsprices.azurewebsites.net/GoldPrices/Prices");//TODO improve with dynamic url from appsettings or sth
         }
 
         // GET: GoldPrices/Prices
