@@ -1,5 +1,9 @@
 # MetalPrices
 
+## Health check
+
+https://metalsprices.azurewebsites.net/GoldPrices
+
 ## Get json with gold prices
 
 https://metalsprices.azurewebsites.net/GoldPrices/Prices
