@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.Api", "MetalsPrices.Api\MetalsPrices.Api.csproj", "{903A6E18-1525-44D9-B9DF-81AF6BF68C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Abstraction.MeralPricesServices", "MetalsPrices.Abstraction.MeralPricesServices\MetalsPrices.Abstraction.MeralPricesServices.csproj", "{2390C2FD-6E8C-4F87-A715-91DA4EAF8802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.Abstraction.MeralPricesServices", "MetalsPrices.Abstraction.MeralPricesServices\MetalsPrices.Abstraction.MeralPricesServices.csproj", "{2390C2FD-6E8C-4F87-A715-91DA4EAF8802}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Abstraction.MetalPricesDataProviders", "MetalsPrices.Abstraction.MetalPricesDataProviders\MetalsPrices.Abstraction.MetalPricesDataProviders.csproj", "{80E24F23-0700-4F69-A6C1-716D6EB29528}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.Abstraction.MetalPricesDataProviders", "MetalsPrices.Abstraction.MetalPricesDataProviders\MetalsPrices.Abstraction.MetalPricesDataProviders.csproj", "{80E24F23-0700-4F69-A6C1-716D6EB29528}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.ExternalApi.Services", "MetalsPrices.ExternalApi.Services\MetalsPrices.ExternalApi.Services.csproj", "{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalsPrices.ExternalApi.Services", "MetalsPrices.ExternalApi.Services\MetalsPrices.ExternalApi.Services.csproj", "{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalsPrices.Model", "MetalsPrices.Model\MetalsPrices.Model.csproj", "{9ED02E78-CA6D-4324-A16B-53A2EB15EBA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA8B8694-4EC9-4D76-B9BE-FFF7C60D7819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED02E78-CA6D-4324-A16B-53A2EB15EBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED02E78-CA6D-4324-A16B-53A2EB15EBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED02E78-CA6D-4324-A16B-53A2EB15EBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED02E78-CA6D-4324-A16B-53A2EB15EBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

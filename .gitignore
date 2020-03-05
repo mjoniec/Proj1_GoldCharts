@@ -50,3 +50,5 @@
 /MetalsPrices.Abstraction.MetalPricesDataProviders/bin/Release/netcoreapp3.0
 /MetalsPrices.Abstraction.MeralPricesServices/bin/Release/netcoreapp3.0
 /MetalsPrices.ExternalApi.Services/bin/Release/netcoreapp3.0
+/MetalsPrices.Model/obj
+/MetalsPrices.Model/bin/Debug/netstandard2.0

@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using MetalsPrices.Model;
+using System.Threading.Tasks;
 
 namespace MetalsPrices.Abstraction.MeralPricesServices
 {
     public interface IMetalPricesService
     {
         Task StartPreparingPrices();
-        MetalPrices.Model.MetalPrices GetPrices();
+        MetalPrices GetPrices();
     }
 }

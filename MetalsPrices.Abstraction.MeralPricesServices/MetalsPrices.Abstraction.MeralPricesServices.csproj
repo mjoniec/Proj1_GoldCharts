@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MetalPrices.Model" Version="1.0.1" />
+    <ProjectReference Include="..\MetalsPrices.Model\MetalsPrices.Model.csproj" />
   </ItemGroup>
 
 </Project>

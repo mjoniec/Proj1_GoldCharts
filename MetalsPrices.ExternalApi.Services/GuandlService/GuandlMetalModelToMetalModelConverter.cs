@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetalsPrices.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,12 +7,12 @@ namespace MetalsPrices.ExternalApi.Services.GuandlService
 {
     internal class GuandlMetalModelToMetalModelConverter
     {
-        internal MetalPrices.Model.MetalPrices ConvertExternalModel(GuandlMetalDataModel guandlMetalDataModel)
+        internal MetalPrices ConvertExternalModel(GuandlMetalDataModel guandlMetalDataModel)
         {
-            return new MetalPrices.Model.MetalPrices
+            return new MetalPrices
             {
                 Prices = GetDailyGoldPricesFromExternalData(guandlMetalDataModel.Data)
-                .Select(d => new MetalPrices.Model.MetalPriceDateTime
+                .Select(d => new MetalPriceDateTime
                 {
                     DateTime = d.Key,
                     Price = d.Value

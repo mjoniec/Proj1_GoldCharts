@@ -1,6 +1,7 @@
 ﻿using MetalsPrices.Abstraction.MeralPricesServices;
 using MetalsPrices.Abstraction.MetalPricesDataProviders;
 using MetalsPrices.ExternalApi.Services.GuandlService;
+using MetalsPrices.Model;
 using System.Threading.Tasks;
 
 namespace MetalsPrices.ExternalApi.Services.Gold
@@ -23,7 +24,7 @@ namespace MetalsPrices.ExternalApi.Services.Gold
             await _goldPricesExternalApiClient.StartPreparingPrices();
         }
 
-        public MetalPrices.Model.MetalPrices GetPrices()
+        public MetalPrices GetPrices()
         {
             var dailyPrices = _goldPricesExternalApiClient.Prices;
 
