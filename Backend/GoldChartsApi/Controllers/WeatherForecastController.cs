@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace MetalsApi.Controllers
+namespace GoldChartsApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

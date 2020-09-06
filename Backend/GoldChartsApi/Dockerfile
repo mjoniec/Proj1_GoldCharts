@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
-COPY ["MetalsApi/MetalsApi.csproj", "MetalsApi/"]
-RUN dotnet restore "MetalsApi/MetalsApi.csproj"
+COPY ["GoldChartsApi/GoldChartsApi.csproj", "GoldChartsApi/"]
+RUN dotnet restore "GoldChartsApi/GoldChartsApi.csproj"
 COPY . .
-WORKDIR "/src/MetalsApi"
-RUN dotnet build "MetalsApi.csproj" -c Release -o /app/build
+WORKDIR "/src/GoldChartsApi"
+RUN dotnet build "GoldChartsApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MetalsApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "GoldChartsApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MetalsApi.dll"]
+ENTRYPOINT ["dotnet", "GoldChartsApi.dll"]

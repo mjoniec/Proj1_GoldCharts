@@ -1,6 +1,6 @@
 using System;
 
-namespace MetalsApi
+namespace GoldChartsApi
 {
     public class WeatherForecast
     {
