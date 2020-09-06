@@ -1,4 +1,4 @@
-# MetalPrices
+# TODO: GoldCharts - to be changed completetly from MetalPrices
 
 ## Health check
 
