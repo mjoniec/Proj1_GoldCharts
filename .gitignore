@@ -65,3 +65,7 @@
 /Backend/GoldChartsApi/bin/Debug/netcoreapp3.1
 /Backend/GoldChartsApi
 /Backend/.vs/GoldCharts/v16/.suo
+/Backend/CurrencyRepository/obj
+/Backend/MetalsDataProvider/obj
+/Backend/CurrencyRepository/bin/Debug/netcoreapp3.1
+/Backend/MetalsDataProvider/bin/Debug/netcoreapp3.1
