@@ -52,3 +52,16 @@
 /MetalsPrices.ExternalApi.Services/bin/Release/netcoreapp3.0
 /MetalsPrices.Model/obj
 /MetalsPrices.Model/bin/Debug/netstandard2.0
+/Backend/MetalsApi/obj
+/Backend/MetalsApi/bin/Debug/netcoreapp3.1
+/Backend/MetalsApi
+/Backend/GoldChartsApi/obj/project.nuget.cache
+/Backend/GoldChartsApi/obj/project.assets.json
+/Backend/GoldChartsApi/obj/GoldChartsApi.csproj.nuget.g.targets
+/Backend/GoldChartsApi/obj/GoldChartsApi.csproj.nuget.g.props
+/Backend/GoldChartsApi/obj/GoldChartsApi.csproj.nuget.dgspec.json
+/Backend/GoldChartsApi/obj/Debug/netcoreapp3.1
+/Backend/GoldChartsApi/obj
+/Backend/GoldChartsApi/bin/Debug/netcoreapp3.1
+/Backend/GoldChartsApi
+/Backend/.vs/GoldCharts/v16/.suo
