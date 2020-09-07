@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MetalsDataProvider.GuandlModel
 {
-    internal class GuandlMetalDataModel
+    internal class GuandlMetalModel
     {
         //names comes from external api json structure
         internal const string NEWEST_AVAILALE_DATE = "newest_available_date";

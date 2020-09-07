@@ -1,6 +1,5 @@
 ﻿using MetalsDataProvider.GuandlModel;
 using MetalsDataProvider.ReadModel;
-using MetalsDataProvider.ReadModelMappers;
 using System.Net.Http;
 using System.Threading.Tasks;
 
