@@ -1,9 +1,12 @@
-﻿using System.Net.Http;
+﻿using MetalsDataProvider.GuandlModel;
+using MetalsDataProvider.ReadModel;
+using MetalsDataProvider.ReadModelMappers;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MetalsDataProvider.Providers
 {
-    public class GuandlMetalsPricesProvider : IMetalsPricesDataProvider
+    public class GuandlMetalsPricesProvider : IMetalsPricesProvider
     {
         //TODO: make readonly and from json config
         private const string GoldPricesUrl = "https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_AUD.json";
@@ -23,14 +26,22 @@ namespace MetalsDataProvider.Providers
             return await httpResponse.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> GetGoldPrices()
+        public async Task<MetalPrices> GetGoldPrices()
         {
-            return await GetPrices(GoldPricesUrl);
+            var json = await GetPrices(GoldPricesUrl);
+
+            return json
+                .Deserialize()
+                .Map();
         }
 
-        public async Task<string> GetSilverPrices()
+        public async Task<MetalPrices> GetSilverPrices()
         {
-            return await GetPrices(SilverPricesUrl);
+            var json = await GetPrices(SilverPricesUrl);
+
+            return json
+                .Deserialize()
+                .Map();
         }
     }
 }

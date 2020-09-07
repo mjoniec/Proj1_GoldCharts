@@ -1,18 +1,19 @@
-﻿using System.Threading.Tasks;
+﻿using MetalsDataProvider.ReadModel;
+using System.Threading.Tasks;
 
 namespace MetalsDataProvider.Providers
 {
-    public class FallbackMetalsPricesProvider : IMetalsPricesDataProvider
+    public class FallbackMetalsPricesProvider : IMetalsPricesProvider
     {
         //TODO: fallback data read from some static Json
-        public async Task<string> GetGoldPrices()
+        public async Task<MetalPrices> GetGoldPrices()
         {
-            return await Task.FromResult("");
+            return await Task.FromResult(new MetalPrices());
         }
 
-        public async Task<string> GetSilverPrices()
+        public async Task<MetalPrices> GetSilverPrices()
         {
-            return await Task.FromResult("");
+            return await Task.FromResult(new MetalPrices());
         }
     }
 }

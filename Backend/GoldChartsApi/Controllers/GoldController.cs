@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using MetalsDataProvider;
-using CurrencyRepository;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MetalsDataProvider.Providers;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace GoldChartsApi.Controllers
 {
@@ -9,39 +9,35 @@ namespace GoldChartsApi.Controllers
     [ApiController]
     public class GoldController : ControllerBase
     {
-        // GET: api/Gold
+        IMetalsPricesProvider _metalsPricesProvider;
+
+        public GoldController(IMetalsPricesProvider metalsPricesProvider)
+        {
+            _metalsPricesProvider = metalsPricesProvider;
+        }
+
+        // GET: GoldPrices
         [HttpGet]
-        public IEnumerable<string> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok("GoldPricesController is working");
         }
 
-        // GET: api/Gold/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: GoldPrices/Prices
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetPrices()
         {
-            var a = new CurrencyRepository.Class1();
-            var b = new MetalsDataProvider.Class1();
+            var dailyGoldPrices = await _metalsPricesProvider.GetGoldPrices();
 
-            return "value";
-        }
+            if (dailyGoldPrices == null)
+            {
+                return NoContent();
+            }
 
-        // POST: api/Gold
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Gold/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok(dailyGoldPrices);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace MetalsDataProvider.GuandlModel
 {
     internal static partial class GuandlMetalModelExtensions
     {
-        internal static GuandlMetalDataModel Deserialize(string json)
+        internal static GuandlMetalDataModel Deserialize(this string json)
         {
             var metalDataJson = ExtractDailyMetalPricesFromExternalJson(json);
             var metalData = JsonConvert.DeserializeObject<GuandlMetalDataModel>(metalDataJson);
