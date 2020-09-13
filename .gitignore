@@ -70,3 +70,4 @@
 /Backend/CurrencyRepository/bin/Debug/netcoreapp3.1
 /Backend/MetalsDataProvider/bin/Debug/netcoreapp3.1
 /Backend/.vs/GoldCharts/DesignTimeBuild
+/Backend/CurrencyDataProvider/obj
