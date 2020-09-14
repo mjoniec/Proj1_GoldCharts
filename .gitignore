@@ -71,3 +71,5 @@
 /Backend/MetalsDataProvider/bin/Debug/netcoreapp3.1
 /Backend/.vs/GoldCharts/DesignTimeBuild
 /Backend/CurrencyDataProvider/obj
+/Backend/.vs/GoldCharts/config
+/Backend/CurrencyDataProvider/bin/Debug/netcoreapp3.1

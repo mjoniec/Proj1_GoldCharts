@@ -4,12 +4,8 @@ namespace CurrencyDataProvider.Model
 {
     public class ExchangeRate
     {
-        public Currency baseCurrency { get; set; }
-        
-        public Currency rateCurrency { get; set; }
-        
-        public double Rate { get; set; }
+        public DateTime Date { get; set; } //Date time and not date for json conversions ...
 
-        public DateTime Date { get; set; } //Date time for json conversions ...
+        public double Rate { get; set; }
     }
 }

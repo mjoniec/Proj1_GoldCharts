@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CurrencyDataProvider\CurrencyDataProvider.csproj" />
     <ProjectReference Include="..\MetalsDataProvider\MetalsDataProvider.csproj" />
   </ItemGroup>
 
