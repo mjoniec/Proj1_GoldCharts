@@ -1,4 +1,5 @@
 using CurrencyDataProvider;
+using CurrencyDataProvider.Repositories;
 using MetalsDataProvider.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ namespace GoldChartsApi
             services.AddDbContext<CurrencyContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddScoped<CurrenciesExchangeDataRepository>();
             services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
         }
 

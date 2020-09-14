@@ -2,6 +2,8 @@
 using MetalsDataProvider.Providers;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using CurrencyDataProvider.Repositories;
+using CurrencyDataProvider.Model;
 
 namespace GoldChartsApi.Controllers
 {
@@ -10,10 +12,13 @@ namespace GoldChartsApi.Controllers
     public class GoldController : ControllerBase
     {
         IMetalsPricesProvider _metalsPricesProvider;
+        CurrenciesExchangeDataRepository _currenciesExchangeDataRepository;
 
-        public GoldController(IMetalsPricesProvider metalsPricesProvider)
+        public GoldController(IMetalsPricesProvider metalsPricesProvider,
+            CurrenciesExchangeDataRepository currenciesExchangeDataRepository)
         {
             _metalsPricesProvider = metalsPricesProvider;
+            _currenciesExchangeDataRepository = currenciesExchangeDataRepository;
         }
 
         // GET: GoldPrices
@@ -38,6 +43,21 @@ namespace GoldChartsApi.Controllers
             }
 
             return Ok(dailyGoldPrices);
+        }
+
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetCurrencies()
+        {
+            var currencies = _currenciesExchangeDataRepository.GetExchangeRates(Currency.AUD, Currency.USD);
+
+            if (currencies == null)
+            {
+                return NoContent();
+            }
+
+            return Ok(currencies);
         }
     }
 }
