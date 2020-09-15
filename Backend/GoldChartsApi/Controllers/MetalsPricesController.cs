@@ -18,13 +18,13 @@ namespace GoldChartsApi.Controllers
             _combineCurrencyAndMetalDataService = combineCurrencyAndMetalDataService;
         }
 
-        // https://localhost:44314/api/Gold/
-        [HttpGet]
+        //https://localhost:44314/api/MetalsPrices/USD/Silver
+        //https://localhost:44314/api/MetalsPrices/AUD/Gold
+        [HttpGet("{currency}/{metal}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(Currency currency, Metal metal)
         {
-            //var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(Currency.USD, Metal.Gold);
-            var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(Currency.USD, Metal.Silver);
+            var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(currency, metal);
 
             if (prices == null)
             {
