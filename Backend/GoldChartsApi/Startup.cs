@@ -1,5 +1,6 @@
 using CurrencyDataProvider;
 using CurrencyDataProvider.Repositories;
+using GoldChartsApi.Services;
 using MetalsDataProvider.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,8 +26,10 @@ namespace GoldChartsApi
             services.AddDbContext<CurrencyContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddScoped<CombineCurrencyAndMetalDataService>();
             services.AddScoped<CurrenciesExchangeDataRepository>();
-            services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
+            //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
+            services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
