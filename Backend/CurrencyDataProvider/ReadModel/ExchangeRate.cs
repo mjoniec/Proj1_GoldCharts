@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CurrencyDataProvider.Model
+namespace CurrencyDataProvider.ReadModel
 {
     public class ExchangeRate
     {

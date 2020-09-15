@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using GoldChartsApi.Services;
 using System.Threading.Tasks;
-using CurrencyDataProvider.Model;
-using GoldChartsApi.Model;
+using CurrencyDataProvider.ReadModel;
+using MetalsDataProvider.ReadModel;
 
 namespace GoldChartsApi.Controllers
 {
@@ -32,36 +32,5 @@ namespace GoldChartsApi.Controllers
 
             return Ok(prices);
         }
-
-        // GET: GoldPrices/Prices
-        //[HttpGet("[action]")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //public async Task<IActionResult> GetPrices()
-        //{
-        //    var dailyGoldPrices = await _metalsPricesProvider.GetGoldPrices();
-
-        //    if (dailyGoldPrices == null)
-        //    {
-        //        return NoContent();
-        //    }
-
-        //    return Ok(dailyGoldPrices);
-        //}
-
-        //[HttpGet("[action]")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //public async Task<IActionResult> GetCurrencies()
-        //{
-        //    var currencies = _currenciesExchangeDataRepository.GetExchangeRates(Currency.AUD, Currency.USD);
-
-        //    if (currencies == null)
-        //    {
-        //        return NoContent();
-        //    }
-
-        //    return Ok(currencies);
-        //}
     }
 }

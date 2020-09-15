@@ -1,4 +1,4 @@
-﻿using CurrencyDataProvider.Model;
+﻿using CurrencyDataProvider.DbModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyDataProvider

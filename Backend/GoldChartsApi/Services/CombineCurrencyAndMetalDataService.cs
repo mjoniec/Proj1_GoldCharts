@@ -1,6 +1,5 @@
-﻿using CurrencyDataProvider.Model;
+﻿using CurrencyDataProvider.ReadModel;
 using CurrencyDataProvider.Repositories;
-using GoldChartsApi.Model;
 using MetalsDataProvider.Providers;
 using MetalsDataProvider.ReadModel;
 using System.Collections.Generic;
@@ -11,14 +10,14 @@ namespace GoldChartsApi.Services
 {
     public class CombineCurrencyAndMetalDataService
     {
-        IMetalsPricesProvider _metalsPricesProvider;
-        CurrenciesExchangeDataRepository _currenciesExchangeDataRepository;
+        private readonly IMetalsPricesProvider _metalsPricesProvider;
+        private readonly ICurrenciesRepository _currenciesRepository;
 
         public CombineCurrencyAndMetalDataService(IMetalsPricesProvider metalsPricesProvider,
-            CurrenciesExchangeDataRepository currenciesExchangeDataRepository)
+            ICurrenciesRepository currenciesExchangeDataRepository)
         {
             _metalsPricesProvider = metalsPricesProvider;
-            _currenciesExchangeDataRepository = currenciesExchangeDataRepository;
+            _currenciesRepository = currenciesExchangeDataRepository;
         }
 
         public async Task<MetalPrices> GetMetalpricesInCurrency(Currency currency, Metal metal)
@@ -32,7 +31,7 @@ namespace GoldChartsApi.Services
             {
                 var prices = ConvertMetalPricesToCurrency(
                     await _metalsPricesProvider.GetGoldPrices(),
-                    _currenciesExchangeDataRepository.GetExchangeRates(Currency.AUD, Currency.USD));
+                    _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD));
 
                 return await Task.FromResult(prices);
             }
@@ -46,7 +45,7 @@ namespace GoldChartsApi.Services
             {
                 var prices = ConvertMetalPricesToCurrency(
                     await _metalsPricesProvider.GetSilverPrices(),
-                    _currenciesExchangeDataRepository.GetExchangeRates(Currency.AUD, Currency.USD));
+                    _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD));
 
                 return await Task.FromResult(prices);
             }

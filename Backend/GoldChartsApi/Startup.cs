@@ -25,9 +25,14 @@ namespace GoldChartsApi
         {
             services.AddDbContext<CurrencyContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddControllers();
+            
             services.AddScoped<CombineCurrencyAndMetalDataService>();
-            services.AddScoped<CurrenciesExchangeDataRepository>();
+            
+            //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
+            services.AddScoped<ICurrenciesRepository, FallbackCurrenciesRepository>();
+            
             //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
             services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();
         }
