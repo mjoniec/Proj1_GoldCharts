@@ -33,8 +33,8 @@ namespace GoldChartsApi
             //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
             services.AddScoped<ICurrenciesRepository, FallbackCurrenciesRepository>();
 
-            services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
-            //services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();
+            //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
+            services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

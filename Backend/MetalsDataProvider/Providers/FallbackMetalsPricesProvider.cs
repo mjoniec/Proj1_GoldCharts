@@ -1,6 +1,7 @@
-﻿using MetalsDataProvider.ReadModel;
-using System;
-using System.Collections.Generic;
+﻿using MetalsDataProvider.GuandlModel;
+using MetalsDataProvider.ReadModel;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace MetalsDataProvider.Providers
@@ -10,42 +11,22 @@ namespace MetalsDataProvider.Providers
         //TODO: fallback data read from some static Json
         public async Task<MetalPrices> GetGoldPrices()
         {
-            return await Task.FromResult(new MetalPrices 
-            { 
-                Prices = new List<MetalPriceDateTime>
-                {
-                    new MetalPriceDateTime
-                    {
-                        DateTime = new DateTime(2020, 1, 1),
-                        Price = 1000.0
-                    },
-                    new MetalPriceDateTime
-                    {
-                        DateTime = new DateTime(2020, 1, 2),
-                        Price = 2000.0
-                    }
-                }
-            });
+            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            var json = await File.ReadAllTextAsync(path + "//goldPricesFallback.json");
+
+            return json
+                .Deserialize()
+                .Map();
         }
 
         public async Task<MetalPrices> GetSilverPrices()
         {
-            return await Task.FromResult(new MetalPrices
-            {
-                Prices = new List<MetalPriceDateTime>
-                {
-                    new MetalPriceDateTime
-                    {
-                        DateTime = new DateTime(2020, 1, 1),
-                        Price = 100.0
-                    },
-                    new MetalPriceDateTime
-                    {
-                        DateTime = new DateTime(2020, 1, 2),
-                        Price = 200.0
-                    }
-                }
-            });
+            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            var json = await File.ReadAllTextAsync(path + "//silverPricesFallback.json");
+
+            return json
+                .Deserialize()
+                .Map();
         }
     }
 }
