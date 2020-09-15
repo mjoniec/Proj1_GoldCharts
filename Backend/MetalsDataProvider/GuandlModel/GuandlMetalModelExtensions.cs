@@ -17,11 +17,11 @@ namespace MetalsDataProvider.GuandlModel
             return metalData;
         }
 
-        internal static MetalPrices Map(this GuandlMetalModel guandlMetalDataModel)
+        internal static MetalPrices Map(this GuandlMetalModel guandlMetalModel)
         {
             return new MetalPrices
             {
-                Prices = GetDailyGoldPricesFromExternalData(guandlMetalDataModel.Data)
+                Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
                 .Select(d => new MetalPriceDateTime
                 {
                     DateTime = d.Key,
@@ -36,8 +36,9 @@ namespace MetalsDataProvider.GuandlModel
 
             foreach (var dayData in data)
             {
-                if (!DateTime.TryParse(dayData.First().ToString(), out DateTime key) ||
-                    !double.TryParse(dayData.Last().ToString(), out double value)) continue;
+                if (dayData.Any(d => d == null) ||
+                    !DateTime.TryParse(dayData[0].ToString(), out DateTime key) ||
+                    !double.TryParse(dayData[1].ToString(), out double value)) continue;
 
                 dailyGoldPrices.Add(key, value);
             }

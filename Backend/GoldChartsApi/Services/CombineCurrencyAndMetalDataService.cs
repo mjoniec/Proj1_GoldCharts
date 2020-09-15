@@ -36,18 +36,9 @@ namespace GoldChartsApi.Services
                 return await Task.FromResult(prices);
             }
 
-            if (metal == Metal.Silver && currency == Currency.AUD)
-            {
-                return await _metalsPricesProvider.GetSilverPrices();
-            }
-
             if (metal == Metal.Silver && currency == Currency.USD)
             {
-                var prices = ConvertMetalPricesToCurrency(
-                    await _metalsPricesProvider.GetSilverPrices(),
-                    _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD));
-
-                return await Task.FromResult(prices);
+                return await _metalsPricesProvider.GetSilverPrices();
             }
 
             return null;

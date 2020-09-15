@@ -9,7 +9,7 @@ namespace MetalsDataProvider.Providers
     {
         //TODO: make readonly and from json config
         private const string GoldPricesUrl = "https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_AUD.json";
-        private const string SilverPricesUrl = "";//TODO: had it stored somewhere in gold backend solution maybe...
+        private const string SilverPricesUrl = "https://www.quandl.com/api/v3/datasets/LBMA/SILVER.json";
 
         private readonly HttpClient _client;
 

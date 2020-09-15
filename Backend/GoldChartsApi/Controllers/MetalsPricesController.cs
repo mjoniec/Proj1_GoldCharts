@@ -9,11 +9,11 @@ namespace GoldChartsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GoldController : ControllerBase
+    public class MetalsPricesController : ControllerBase
     {
         CombineCurrencyAndMetalDataService _combineCurrencyAndMetalDataService;
 
-        public GoldController(CombineCurrencyAndMetalDataService combineCurrencyAndMetalDataService)
+        public MetalsPricesController(CombineCurrencyAndMetalDataService combineCurrencyAndMetalDataService)
         {
             _combineCurrencyAndMetalDataService = combineCurrencyAndMetalDataService;
         }
@@ -23,7 +23,8 @@ namespace GoldChartsApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get()
         {
-            var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(Currency.USD, Metal.Gold);
+            //var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(Currency.USD, Metal.Gold);
+            var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(Currency.USD, Metal.Silver);
 
             if (prices == null)
             {
