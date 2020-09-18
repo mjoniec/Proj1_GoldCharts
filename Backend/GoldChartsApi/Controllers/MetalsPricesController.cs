@@ -24,7 +24,7 @@ namespace GoldChartsApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get(Currency currency, Metal metal)
         {
-            var prices = await _combineCurrencyAndMetalDataService.GetMetalpricesInCurrency(currency, metal);
+            var prices = await _combineCurrencyAndMetalDataService.GetMetalPricesInCurrency(currency, metal);
 
             if (prices == null)
             {

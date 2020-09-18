@@ -2,12 +2,12 @@
 
 namespace CurrencyDataProvider.ReadModel
 {
-    public class ExchangeRates
+    public class CurrencyRates
     {
         public string BaseCurrency { get; set; }
 
         public string RateCurrency { get; set; }
 
-        public List<ExchangeRate> Rates { get; set; }
+        public List<CurrencyRateDate> Rates { get; set; }
     }
 }

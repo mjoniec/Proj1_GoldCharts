@@ -2,7 +2,7 @@
 
 namespace CurrencyDataProvider.DbModel
 {
-    public class EUR_AUD : ExchangeRate
+    public class EUR_AUD : CurrencyRateDate
     {
 
     }

@@ -24,8 +24,8 @@ namespace MetalsDataProvider.GuandlModel
                 Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
                 .Select(d => new MetalPriceDate
                 {
-                    DateTime = d.Key,
-                    Price = d.Value
+                    Date = d.Key,
+                    Value = d.Value
                 }).ToList()
             };
         }

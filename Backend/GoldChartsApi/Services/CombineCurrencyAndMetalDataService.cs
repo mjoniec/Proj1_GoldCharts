@@ -20,7 +20,7 @@ namespace GoldChartsApi.Services
             _currenciesRepository = currenciesExchangeDataRepository;
         }
 
-        public async Task<MetalPrices> GetMetalpricesInCurrency(Currency currency, Metal metal)
+        public async Task<MetalPrices> GetMetalPricesInCurrency(Currency currency, Metal metal)
         {
             if (metal == Metal.Gold && currency == Currency.AUD)
             {
@@ -44,20 +44,20 @@ namespace GoldChartsApi.Services
             return null;
         }
 
-        private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, ExchangeRates rates)
+        private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, CurrencyRates rates)
         {
             var prices = new List<MetalPriceDate>();
 
             foreach (var p in metalPrices.Prices)
             {
-                var r = rates.Rates.First(e => e.Date == p.DateTime);
+                var r = rates.Rates.First(e => e.Date == p.Date);
 
                 if (r == null) continue;
 
                 prices.Add(new MetalPriceDate
                 {
-                    DateTime = p.DateTime,
-                    Price = p.Price *= r.Rate
+                    Date = p.Date,
+                    Value = p.Value *= r.Value
                 });
             }
 

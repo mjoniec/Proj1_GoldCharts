@@ -5,9 +5,9 @@ namespace CurrencyDataProvider.Repositories
 {
     public class FallbackCurrenciesRepository : ICurrenciesRepository
     {
-        public ExchangeRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency)
+        public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency)
         {
-            var exchangeRates = new ExchangeRates
+            var exchangeRates = new CurrencyRates
             {
                 BaseCurrency = baseCurrency.ToString(),
                 RateCurrency = rateCurrency.ToString()
@@ -21,7 +21,7 @@ namespace CurrencyDataProvider.Repositories
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.USD)
             {
                 exchangeRates.Rates = USD_AUD_Initialize.Generate();
-                exchangeRates.Rates.ForEach(r => r.Rate = 1.0 / r.Rate);
+                exchangeRates.Rates.ForEach(r => r.Value = 1.0 / r.Value);
             }
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.EUR)
@@ -32,7 +32,7 @@ namespace CurrencyDataProvider.Repositories
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.USD)
             {
                 exchangeRates.Rates = USD_EUR_Initialize.Generate();
-                exchangeRates.Rates.ForEach(r => r.Rate = 1.0 / r.Rate);
+                exchangeRates.Rates.ForEach(r => r.Value = 1.0 / r.Value);
             }
 
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.AUD)
@@ -43,7 +43,7 @@ namespace CurrencyDataProvider.Repositories
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.EUR)
             {
                 exchangeRates.Rates = EUR_AUD_Initialize.Generate();
-                exchangeRates.Rates.ForEach(r => r.Rate = 1.0 / r.Rate);
+                exchangeRates.Rates.ForEach(r => r.Value = 1.0 / r.Value);
             }
 
             return exchangeRates;

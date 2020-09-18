@@ -4,6 +4,6 @@ namespace CurrencyDataProvider.Repositories
 {
     public interface ICurrenciesRepository
     {
-        public ExchangeRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency);
+        public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency);
     }
 }
