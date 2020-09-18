@@ -2,6 +2,7 @@
 using CurrencyDataProvider.Repositories;
 using MetalsDataProvider.Providers;
 using MetalsDataProvider.ReadModel;
+using Microsoft.EntityFrameworkCore.Internal;
 using Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,22 +48,53 @@ namespace GoldChartsApi.Services
 
         private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, CurrencyRates rates)
         {
+            var metalPricesFilled = FillMissingDates(metalPrices.Prices);
+            var ratesFilled = FillMissingDates(rates.Rates);
             var prices = new List<MetalPriceDate>();
 
-            foreach (var p in metalPrices.Prices)
+            foreach (var p in metalPricesFilled)
             {
-                var r = rates.Rates.First(e => e.Date == p.Date);
+                var r = ratesFilled.FirstOrDefault(e => e.Date == p.Date);
 
                 if (r == null) continue;
 
                 prices.Add(new MetalPriceDate
                 {
                     Date = p.Date,
-                    Value = p.Value *= r.Value
+                    Value = p.Value * r.Value
                 });
             }
 
             return new MetalPrices { Prices = prices };
+        }
+
+        private List<ValueDate> FillMissingDates(List<MetalPriceDate> valuesDates)
+        {
+            return FillMissingDates(valuesDates.Cast<ValueDate>().ToList());
+        }
+
+        private List<ValueDate> FillMissingDates(List<CurrencyRateDate> valuesDates)
+        {
+            return FillMissingDates(valuesDates.Cast<ValueDate>().ToList());
+        }
+
+        private List<ValueDate> FillMissingDates(List<ValueDate> valuesDates)
+        {
+            var list = new List<ValueDate>();
+            var values = valuesDates.OrderBy(v => v.Date).ToList();
+            var lastKnownValue = values.First().Value;
+
+            for (var date = values.First().Date; date <= values.Last().Date; date = date.AddDays(1))
+            {
+                if (values.Any(l => l.Date.Date == date))
+                {
+                    lastKnownValue = values.First(l => l.Date.Date == date).Value;
+                }
+
+                list.Add(new ValueDate { Date = date, Value = lastKnownValue });
+            }
+
+            return list;
         }
     }
 }
