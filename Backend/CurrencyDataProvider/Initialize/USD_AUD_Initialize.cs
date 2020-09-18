@@ -2,6 +2,7 @@
 using CurrencyDataProvider.ReadModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CurrencyDataProvider.Initialize
 {
@@ -9,12 +10,10 @@ namespace CurrencyDataProvider.Initialize
     {
         public static void Initialize(CurrencyContext context)
         {
-            var list = Generate();
-
-            foreach (var l in list)
-            {
-                context.USD_AUD.Add(new USD_AUD { Date = l.Date, Rate = l.Rate });
-            }
+            context.USD_AUD.AddRange(
+                Generate()
+                    .Select(l => new USD_AUD { Date = l.Date, Rate = l.Rate })
+                    .ToList());
         }
 
         public static List<ExchangeRate> Generate()
