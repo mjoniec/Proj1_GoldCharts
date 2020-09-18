@@ -12,6 +12,7 @@ namespace CurrencyDataProvider
 
         public DbSet<USD_AUD> USD_AUD { get; set; }
         public DbSet<USD_EUR> USD_EUR { get; set; }
+        public DbSet<EUR_AUD> EUR_AUD { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,7 +22,10 @@ namespace CurrencyDataProvider
 
             modelBuilder.Entity<USD_EUR>()
                 .HasKey(e => e.Date);
-                //.HasNoKey(); //EF bug !!!!
+            //.HasNoKey(); //EF bug !!!!
+
+            modelBuilder.Entity<EUR_AUD>()
+                .HasKey(e => e.Date);
         }
     }
 }

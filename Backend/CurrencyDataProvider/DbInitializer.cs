@@ -1,6 +1,5 @@
-﻿using CurrencyDataProvider.DbModel;
+﻿using CurrencyDataProvider.Initialize;
 using Microsoft.EntityFrameworkCore.Internal;
-using System;
 
 namespace CurrencyDataProvider
 {
@@ -12,14 +11,17 @@ namespace CurrencyDataProvider
 
             if (!context.USD_AUD.Any())
             {
-                context.USD_AUD.Add(new USD_AUD { Date = new DateTime(2020, 1, 1), Rate = 1.1 });
-                context.USD_AUD.Add(new USD_AUD { Date = new DateTime(2020, 1, 2), Rate = 1.2 });
+                USD_AUD_Initialize.Initialize(context);
             }
 
             if (!context.USD_EUR.Any())
             {
-                context.USD_EUR.Add(new USD_EUR { Date = new DateTime(2020, 1, 1), Rate = 2.1 });
-                context.USD_EUR.Add(new USD_EUR { Date = new DateTime(2020, 1, 2), Rate = 2.2 });
+                USD_EUR_Initialize.Initialize(context);
+            }
+
+            if (!context.EUR_AUD.Any())
+            {
+                EUR_AUD_Initialize.Initialize(context);
             }
 
             context.SaveChanges();

@@ -4,6 +4,6 @@ namespace MetalsDataProvider.ReadModel
 {
     public class MetalPrices
     {
-        public List<MetalPriceDateTime> Prices { get; set; }
+        public List<MetalPriceDate> Prices { get; set; }
     }
 }

@@ -1,6 +1,5 @@
-﻿using CurrencyDataProvider.ReadModel;
-using System;
-using System.Collections.Generic;
+﻿using CurrencyDataProvider.Initialize;
+using CurrencyDataProvider.ReadModel;
 
 namespace CurrencyDataProvider.Repositories
 {
@@ -16,38 +15,35 @@ namespace CurrencyDataProvider.Repositories
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = new List<ExchangeRate>
-                {
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 1), Rate = 1.1 },
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 2), Rate = 1.2 }
-                };
+                exchangeRates.Rates = USD_AUD_Initialize.Generate();
             }
 
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.USD)
             {
-                exchangeRates.Rates = new List<ExchangeRate>
-                {
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 1), Rate = 0.9 },
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 2), Rate = 0.8 }
-                };
+                exchangeRates.Rates = USD_AUD_Initialize.Generate();
+                exchangeRates.Rates.ForEach(r => r.Rate = 1.0 / r.Rate);
             }
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.EUR)
             {
-                exchangeRates.Rates = new List<ExchangeRate>
-                {
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 1), Rate = 2.1 },
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 2), Rate = 2.2 }
-                };
+                exchangeRates.Rates = USD_EUR_Initialize.Generate();
             }
 
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.USD)
             {
-                exchangeRates.Rates = new List<ExchangeRate>
-                {
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 1), Rate = 0.6 },
-                    new ExchangeRate{ Date = new DateTime(2020, 1, 2), Rate = 0.5 }
-                };
+                exchangeRates.Rates = USD_EUR_Initialize.Generate();
+                exchangeRates.Rates.ForEach(r => r.Rate = 1.0 / r.Rate);
+            }
+
+            if (baseCurrency == Currency.EUR && rateCurrency == Currency.AUD)
+            {
+                exchangeRates.Rates = EUR_AUD_Initialize.Generate();
+            }
+
+            if (baseCurrency == Currency.AUD && rateCurrency == Currency.EUR)
+            {
+                exchangeRates.Rates = EUR_AUD_Initialize.Generate();
+                exchangeRates.Rates.ForEach(r => r.Rate = 1.0 / r.Rate);
             }
 
             return exchangeRates;

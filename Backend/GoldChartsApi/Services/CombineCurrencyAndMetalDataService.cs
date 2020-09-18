@@ -46,7 +46,7 @@ namespace GoldChartsApi.Services
 
         private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, ExchangeRates rates)
         {
-            var prices = new List<MetalPriceDateTime>();
+            var prices = new List<MetalPriceDate>();
 
             foreach (var p in metalPrices.Prices)
             {
@@ -54,7 +54,7 @@ namespace GoldChartsApi.Services
 
                 if (r == null) continue;
 
-                prices.Add(new MetalPriceDateTime
+                prices.Add(new MetalPriceDate
                 {
                     DateTime = p.DateTime,
                     Price = p.Price *= r.Rate
