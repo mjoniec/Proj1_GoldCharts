@@ -1,4 +1,5 @@
 ﻿using CurrencyDataProvider.ReadModel;
+using Model;
 
 namespace CurrencyDataProvider.Repositories
 {

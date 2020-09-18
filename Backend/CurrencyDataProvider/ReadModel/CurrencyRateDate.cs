@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Model;
 
 namespace CurrencyDataProvider.ReadModel
 {
-    public class CurrencyRateDate
+    public class CurrencyRateDate : ValueDate
     {
-        public DateTime Date { get; set; } //Date time and not date for json conversions ...
 
-        public double Value { get; set; }
     }
 }

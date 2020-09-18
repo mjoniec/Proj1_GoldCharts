@@ -1,4 +1,4 @@
-﻿namespace CurrencyDataProvider.ReadModel
+﻿namespace Model
 {
     public enum Currency
     {

@@ -73,3 +73,6 @@
 /Backend/CurrencyDataProvider/obj
 /Backend/.vs/GoldCharts/config
 /Backend/CurrencyDataProvider/bin/Debug/netcoreapp3.1
+/Backend/Model/obj/Debug/netcoreapp3.1
+/Backend/Model/obj
+/Backend/Model/bin/Debug/netcoreapp3.1

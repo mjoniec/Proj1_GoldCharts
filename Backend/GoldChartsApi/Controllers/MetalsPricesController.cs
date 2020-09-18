@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using GoldChartsApi.Services;
 using System.Threading.Tasks;
-using CurrencyDataProvider.ReadModel;
 using MetalsDataProvider.ReadModel;
+using Model;
 
 namespace GoldChartsApi.Controllers
 {

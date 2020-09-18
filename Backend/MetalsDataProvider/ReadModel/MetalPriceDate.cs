@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Model;
 
 namespace MetalsDataProvider.ReadModel
 {
-    public class MetalPriceDate
+    public class MetalPriceDate : ValueDate
     {
-        public DateTime Date { get; set; }
-        public double Value { get; set; }
+
     }
 }
