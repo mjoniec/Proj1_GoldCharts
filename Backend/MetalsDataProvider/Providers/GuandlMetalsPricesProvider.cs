@@ -1,5 +1,6 @@
 ﻿using MetalsDataProvider.GuandlModel;
 using MetalsDataProvider.ReadModel;
+using Model;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -28,19 +29,27 @@ namespace MetalsDataProvider.Providers
         public async Task<MetalPrices> GetGoldPrices()
         {
             var json = await GetPrices(GoldPricesUrl);
-
-            return json
+            
+            var metalPrices = json
                 .Deserialize()
                 .Map();
+
+            metalPrices.Currency = Currency.AUD;
+
+            return metalPrices;
         }
 
         public async Task<MetalPrices> GetSilverPrices()
         {
             var json = await GetPrices(SilverPricesUrl);
 
-            return json
+            var metalPrices = json
                 .Deserialize()
                 .Map();
+
+            metalPrices.Currency = Currency.USD;
+
+            return metalPrices;
         }
     }
 }

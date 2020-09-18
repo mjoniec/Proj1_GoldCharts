@@ -50,6 +50,20 @@ namespace CurrencyDataProvider.Repositories
                 exchangeRates.Rates = new List<CurrencyRateDate>(EUR_USD);
             }
 
+            if (baseCurrency == Currency.EUR && rateCurrency == Currency.AUD)
+            {
+                exchangeRates.Rates = new List<CurrencyRateDate>(_context.EUR_AUD);
+            }
+
+            if (baseCurrency == Currency.AUD && rateCurrency == Currency.EUR)
+            {
+                var AUD_EUR = _context.EUR_AUD.ToList();
+
+                AUD_EUR.ForEach(e => e.Value = 1 / e.Value);
+
+                exchangeRates.Rates = new List<CurrencyRateDate>(AUD_EUR);
+            }
+
             return exchangeRates;
         }
     }
