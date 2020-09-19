@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CurrencyDataProvider.Repositories
+namespace CurrencyDataProvider.Providers
 {
-    public class CurrenciesRepository : ICurrenciesRepository
+    public class CurrenciesRepository : ICurrenciesProvider
     {
         private readonly CurrencyContext _context;
 
@@ -19,6 +19,7 @@ namespace CurrencyDataProvider.Repositories
         {
             var exchangeRates = new CurrencyRates
             {
+                DataSource = DataSource.Database,
                 BaseCurrency = baseCurrency.ToString(),
                 RateCurrency = rateCurrency.ToString()
             };
@@ -26,7 +27,7 @@ namespace CurrencyDataProvider.Repositories
             if (baseCurrency == Currency.USD && rateCurrency == Currency.AUD)
             {
                 exchangeRates.Rates = new List<CurrencyRateDate>(
-                    _context.USD_AUD.Where(c=>c.Date >= start && c.Date <= end));
+                    _context.USD_AUD.Where(c => c.Date >= start && c.Date <= end));
             }
 
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.USD)

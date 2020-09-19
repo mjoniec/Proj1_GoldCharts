@@ -1,5 +1,5 @@
 using CurrencyDataProvider;
-using CurrencyDataProvider.Repositories;
+using CurrencyDataProvider.Providers;
 using GoldChartsApi.Services;
 using MetalsDataProvider.Providers;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Polly;
 
 namespace GoldChartsApi
 {
@@ -31,7 +32,7 @@ namespace GoldChartsApi
             services.AddScoped<CombineCurrencyAndMetalDataService>();
             
             //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
-            services.AddScoped<ICurrenciesRepository, FallbackCurrenciesRepository>();
+            services.AddScoped<ICurrenciesProvider, CurrenciesFallback>();
 
             //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
             services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();

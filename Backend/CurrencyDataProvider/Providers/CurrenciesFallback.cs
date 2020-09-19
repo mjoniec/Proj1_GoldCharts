@@ -4,14 +4,15 @@ using Model;
 using System;
 using System.Linq;
 
-namespace CurrencyDataProvider.Repositories
+namespace CurrencyDataProvider.Providers
 {
-    public class FallbackCurrenciesRepository : ICurrenciesRepository
+    public class CurrenciesFallback : ICurrenciesProvider
     {
         public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)
         {
             var exchangeRates = new CurrencyRates
             {
+                DataSource = DataSource.Fallback,
                 BaseCurrency = baseCurrency.ToString(),
                 RateCurrency = rateCurrency.ToString()
             };

@@ -2,9 +2,9 @@
 using Model;
 using System;
 
-namespace CurrencyDataProvider.Repositories
+namespace CurrencyDataProvider.Providers
 {
-    public interface ICurrenciesRepository
+    public interface ICurrenciesProvider
     {
         public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end);
     }

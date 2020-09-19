@@ -1,5 +1,5 @@
-﻿using CurrencyDataProvider.ReadModel;
-using CurrencyDataProvider.Repositories;
+﻿using CurrencyDataProvider.Providers;
+using CurrencyDataProvider.ReadModel;
 using MetalsDataProvider.Providers;
 using MetalsDataProvider.ReadModel;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -14,10 +14,10 @@ namespace GoldChartsApi.Services
     public class CombineCurrencyAndMetalDataService
     {
         private readonly IMetalsPricesProvider _metalsPricesProvider;
-        private readonly ICurrenciesRepository _currenciesRepository;
+        private readonly ICurrenciesProvider _currenciesRepository;
 
         public CombineCurrencyAndMetalDataService(IMetalsPricesProvider metalsPricesProvider,
-            ICurrenciesRepository currenciesExchangeDataRepository)
+            ICurrenciesProvider currenciesExchangeDataRepository)
         {
             _metalsPricesProvider = metalsPricesProvider;
             _currenciesRepository = currenciesExchangeDataRepository;
