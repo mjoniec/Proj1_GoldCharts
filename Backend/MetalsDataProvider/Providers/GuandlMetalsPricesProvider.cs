@@ -35,8 +35,9 @@ namespace MetalsDataProvider.Providers
                 .Deserialize()
                 .Map(start, end);
 
+            metalPrices.DataSource = DataSource.GuandlApi;
             metalPrices.Currency = Currency.AUD;
-
+            
             return metalPrices;
         }
 
@@ -48,6 +49,7 @@ namespace MetalsDataProvider.Providers
                 .Deserialize()
                 .Map(start, end);
 
+            metalPrices.DataSource = DataSource.GuandlApi;
             metalPrices.Currency = Currency.USD;
 
             return metalPrices;

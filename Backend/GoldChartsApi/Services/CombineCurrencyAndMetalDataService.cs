@@ -70,7 +70,12 @@ namespace GoldChartsApi.Services
                 });
             }
 
-            return new MetalPrices { Prices = prices };
+            return new MetalPrices 
+            { 
+                DataSource = metalPrices.DataSource, 
+                Currency = metalPrices.Currency, 
+                Prices = prices 
+            };
         }
 
         private List<ValueDate> FillMissingDates(List<MetalPriceDate> valuesDates)

@@ -17,19 +17,6 @@ namespace MetalsDataProvider.GuandlModel
             return metalData;
         }
 
-        internal static MetalPrices Map(this GuandlMetalModel guandlMetalModel)
-        {
-            return new MetalPrices
-            {
-                Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
-                .Select(d => new MetalPriceDate
-                {
-                    Date = d.Key,
-                    Value = d.Value
-                }).ToList()
-            };
-        }
-
         internal static MetalPrices Map(this GuandlMetalModel guandlMetalModel, DateTime start, DateTime end)
         {
             return new MetalPrices
