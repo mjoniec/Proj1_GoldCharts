@@ -30,6 +30,21 @@ namespace MetalsDataProvider.GuandlModel
             };
         }
 
+        internal static MetalPrices Map(this GuandlMetalModel guandlMetalModel, DateTime start, DateTime end)
+        {
+            return new MetalPrices
+            {
+                Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
+                .Select(d => new MetalPriceDate
+                {
+                    Date = d.Key,
+                    Value = d.Value
+                })
+                .Where(m => m.Date >= start && m.Date <= end)
+                .ToList()
+            };
+        }
+
         private static Dictionary<DateTime, double> GetDailyGoldPricesFromExternalData(List<List<object>> data)
         {
             var dailyGoldPrices = new Dictionary<DateTime, double>();

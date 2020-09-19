@@ -4,6 +4,7 @@ using MetalsDataProvider.Providers;
 using MetalsDataProvider.ReadModel;
 using Microsoft.EntityFrameworkCore.Internal;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,25 +23,29 @@ namespace GoldChartsApi.Services
             _currenciesRepository = currenciesExchangeDataRepository;
         }
 
-        public async Task<MetalPrices> GetMetalPricesInCurrency(Currency currency, Metal metal)
+        public async Task<MetalPrices> GetMetalPricesInCurrency(
+            Currency currency, 
+            Metal metal,
+            DateTime start,
+            DateTime end)
         {
             if (metal == Metal.Gold && currency == Currency.AUD)
             {
-                return await _metalsPricesProvider.GetGoldPrices();
+                return await _metalsPricesProvider.GetGoldPrices(start, end);
             }
 
             if (metal == Metal.Gold && currency == Currency.USD)
             {
                 var prices = ConvertMetalPricesToCurrency(
-                    await _metalsPricesProvider.GetGoldPrices(),
-                    _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD));
+                    await _metalsPricesProvider.GetGoldPrices(start, end),
+                    _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD, start, end));
 
                 return await Task.FromResult(prices);
             }
 
             if (metal == Metal.Silver && currency == Currency.USD)
             {
-                return await _metalsPricesProvider.GetSilverPrices();
+                return await _metalsPricesProvider.GetSilverPrices(start, end);
             }
 
             return null;

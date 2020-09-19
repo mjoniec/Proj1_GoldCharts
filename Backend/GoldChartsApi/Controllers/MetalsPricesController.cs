@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using GoldChartsApi.Services;
 using System.Threading.Tasks;
-using MetalsDataProvider.ReadModel;
 using Model;
+using System;
 
 namespace GoldChartsApi.Controllers
 {
@@ -18,13 +18,13 @@ namespace GoldChartsApi.Controllers
             _combineCurrencyAndMetalDataService = combineCurrencyAndMetalDataService;
         }
 
-        //https://localhost:44314/api/MetalsPrices/USD/Silver
-        //https://localhost:44314/api/MetalsPrices/AUD/Gold
-        [HttpGet("{currency}/{metal}")]
+        //https://localhost:44314/api/MetalsPrices/USD/Silver/2000-1-1/2005-1-1
+        //https://localhost:44314/api/MetalsPrices/AUD/Gold/2000-1-1/2005-1-1
+        [HttpGet("{currency}/{metal}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get(Currency currency, Metal metal)
+        public async Task<IActionResult> Get(Currency currency, Metal metal, DateTime start, DateTime end)
         {
-            var prices = await _combineCurrencyAndMetalDataService.GetMetalPricesInCurrency(currency, metal);
+            var prices = await _combineCurrencyAndMetalDataService.GetMetalPricesInCurrency(currency, metal, start, end);
 
             if (prices == null)
             {
