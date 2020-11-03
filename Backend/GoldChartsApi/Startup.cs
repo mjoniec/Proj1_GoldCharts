@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 using CurrencyDataProvider;
 using CurrencyDataProvider.Providers;
 using GoldChartsApi.Services;
-using MetalsDataProvider.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
-
 
 namespace GoldChartsApi
 {
@@ -50,7 +48,7 @@ namespace GoldChartsApi
             //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
             services.AddScoped<ICurrenciesProvider, CurrenciesFallback>();
 
-            services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
+            //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
             //services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();
         }
 
@@ -73,6 +71,8 @@ namespace GoldChartsApi
 
         private Task OnFallbackAsync(DelegateResult<HttpResponseMessage> response, Context context)
         {
+            //context.
+
             //Console.WriteLine("About to call the fallback action. This is a good place to do some logging");
             return Task.CompletedTask;
         }
@@ -80,6 +80,10 @@ namespace GoldChartsApi
         private Task<HttpResponseMessage> FallbackAction(DelegateResult<HttpResponseMessage> responseToFailedRequest, Context context, CancellationToken cancellationToken)
         {
             //Console.WriteLine("Fallback action is executing");
+
+            var request = responseToFailedRequest.Result.RequestMessage;
+            var content = request.Content;
+            _ = content.ReadAsStringAsync().Result;
 
             HttpResponseMessage httpResponseMessage = new HttpResponseMessage(responseToFailedRequest.Result.StatusCode)
             {

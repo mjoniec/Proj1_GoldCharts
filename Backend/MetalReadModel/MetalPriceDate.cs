@@ -1,6 +1,6 @@
 ﻿using Model;
 
-namespace MetalsDataProvider.ReadModel
+namespace MetalReadModel
 {
     public class MetalPriceDate : ValueDate
     {

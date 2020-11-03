@@ -1,11 +1,11 @@
-﻿using MetalsDataProvider.GuandlModel;
-using MetalsDataProvider.ReadModel;
+﻿using MetalApi.GuandlModel;
+using MetalReadModel;
 using Model;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MetalsDataProvider.Providers
+namespace MetalApi.Providers
 {
     public class GuandlMetalsPricesProvider : IMetalsPricesProvider
     {
@@ -14,38 +14,32 @@ namespace MetalsDataProvider.Providers
         //private const string SilverPricesUrl = "https://www.quandl.com/api/v3/datasets/LBMA/SILVER.json";
         private const string GoldPricesUrl = "WGC/GOLD_DAILY_AUD.json";
         private const string SilverPricesUrl = "LBMA/SILVER.json";
-
-        //private readonly HttpClient _httpClient;
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public GuandlMetalsPricesProvider/*(HttpClient httpClient)*/
-            (IHttpClientFactory httpClientFactory)
+        public GuandlMetalsPricesProvider(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
-        //{
-        //    _httpClient = httpClient;
-        //}
 
         private async Task<string> GetPrices(string url)
         {
             var httpClient = _httpClientFactory.CreateClient("QuandlService");
             var httpResponse = await httpClient.GetAsync(url);
-            
+
             return await httpResponse.Content.ReadAsStringAsync();
         }
 
         public async Task<MetalPrices> GetGoldPrices(DateTime start, DateTime end)
         {
             var json = await GetPrices(GoldPricesUrl);
-            
+
             var metalPrices = json
                 .Deserialize()
                 .Map(start, end);
 
             metalPrices.DataSource = DataSource.GuandlApi;
             metalPrices.Currency = Currency.AUD;
-            
+
             return metalPrices;
         }
 

@@ -1,8 +1,8 @@
-﻿using MetalsDataProvider.ReadModel;
+﻿using MetalReadModel;
 using System;
 using System.Threading.Tasks;
 
-namespace MetalsDataProvider.Providers
+namespace MetalApi.Providers
 {
     public interface IMetalsPricesProvider
     {

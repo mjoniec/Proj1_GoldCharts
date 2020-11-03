@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyDataProvider", "Cur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{A0E087D0-6A29-40F4-9BA4-73BB64B3D551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalApi", "MetalApi\MetalApi.csproj", "{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalApi", "MetalApi\MetalApi.csproj", "{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalReadModel", "MetalReadModel\MetalReadModel.csproj", "{0C05E756-08C3-4DEC-8E78-CB29F0E75929}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C05E756-08C3-4DEC-8E78-CB29F0E75929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C05E756-08C3-4DEC-8E78-CB29F0E75929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C05E756-08C3-4DEC-8E78-CB29F0E75929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C05E756-08C3-4DEC-8E78-CB29F0E75929}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

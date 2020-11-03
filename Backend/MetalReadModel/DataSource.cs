@@ -1,4 +1,4 @@
-﻿namespace MetalsDataProvider.ReadModel
+﻿namespace MetalReadModel
 {
     public enum DataSource
     {
