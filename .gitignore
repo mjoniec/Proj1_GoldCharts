@@ -76,3 +76,5 @@
 /Backend/Model/obj/Debug/netcoreapp3.1
 /Backend/Model/obj
 /Backend/Model/bin/Debug/netcoreapp3.1
+/Backend/MetalApi/bin/Debug/netcoreapp3.1
+/Backend/MetalApi/obj

@@ -25,16 +25,16 @@ namespace GoldChartsApi.Services
 
         public async Task<MetalPrices> GetMetalPricesInCurrency(
             Currency currency, 
-            Metal metal,
+            MetalType metal,
             DateTime start,
             DateTime end)
         {
-            if (metal == Metal.Gold && currency == Currency.AUD)
+            if (metal == MetalType.Gold && currency == Currency.AUD)
             {
                 return await _metalsPricesProvider.GetGoldPrices(start, end);
             }
 
-            if (metal == Metal.Gold && currency == Currency.USD)
+            if (metal == MetalType.Gold && currency == Currency.USD)
             {
                 var prices = ConvertMetalPricesToCurrency(
                     await _metalsPricesProvider.GetGoldPrices(start, end),
@@ -43,7 +43,7 @@ namespace GoldChartsApi.Services
                 return await Task.FromResult(prices);
             }
 
-            if (metal == Metal.Silver && currency == Currency.USD)
+            if (metal == MetalType.Silver && currency == Currency.USD)
             {
                 return await _metalsPricesProvider.GetSilverPrices(start, end);
             }
