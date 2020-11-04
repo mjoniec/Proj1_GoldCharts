@@ -18,6 +18,8 @@ namespace MetalApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<HttpFallback>();
+
             services
                 .AddScoped<GuandlMetalsPricesProvider>()
                 .AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>(

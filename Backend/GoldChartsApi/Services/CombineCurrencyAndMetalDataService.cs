@@ -1,7 +1,7 @@
 ﻿using CurrencyDataProvider.Providers;
 using CurrencyDataProvider.ReadModel;
-using MetalsDataProvider.Providers;
-using MetalsDataProvider.ReadModel;
+using MetalApi.Providers;
+using MetalReadModel;
 using Microsoft.EntityFrameworkCore.Internal;
 using Model;
 using System;
@@ -29,24 +29,24 @@ namespace GoldChartsApi.Services
             DateTime start,
             DateTime end)
         {
-            if (metal == MetalType.Gold && currency == Currency.AUD)
-            {
-                return await _metalsPricesProvider.GetGoldPrices(start, end);
-            }
+            //if (metal == MetalType.Gold && currency == Currency.AUD)
+            //{
+            //    return await _metalsPricesProvider.GetGoldPrices(start, end);
+            //}
 
-            if (metal == MetalType.Gold && currency == Currency.USD)
-            {
-                var prices = ConvertMetalPricesToCurrency(
-                    await _metalsPricesProvider.GetGoldPrices(start, end),
-                    _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD, start, end));
+            //if (metal == MetalType.Gold && currency == Currency.USD)
+            //{
+            //    var prices = ConvertMetalPricesToCurrency(
+            //        await _metalsPricesProvider.GetGoldPrices(start, end),
+            //        _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD, start, end));
 
-                return await Task.FromResult(prices);
-            }
+            //    return await Task.FromResult(prices);
+            //}
 
-            if (metal == MetalType.Silver && currency == Currency.USD)
-            {
-                return await _metalsPricesProvider.GetSilverPrices(start, end);
-            }
+            //if (metal == MetalType.Silver && currency == Currency.USD)
+            //{
+            //    return await _metalsPricesProvider.GetSilverPrices(start, end);
+            //}
 
             return null;
         }
