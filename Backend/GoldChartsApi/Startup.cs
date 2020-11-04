@@ -26,17 +26,7 @@ namespace GoldChartsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var fallbackPolicy =
-                Policy.HandleResult<HttpResponseMessage>(r => !r.IsSuccessStatusCode)
-                    .FallbackAsync(FallbackAction, OnFallbackAsync);
-
-            services.AddHttpClient("QuandlService", client =>
-            {
-                //client.BaseAddress = new Uri("https://www.quandl.com/api/v3/datasets/");
-                client.BaseAddress = new Uri("https://www.quandl.com/api/v3/xxx/");//wrong url for tests
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            })
-            .AddPolicyHandler(fallbackPolicy);
+            
 
             services.AddDbContext<CurrencyContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -67,29 +57,6 @@ namespace GoldChartsApi
             {
                 endpoints.MapControllers();
             });
-        }
-
-        private Task OnFallbackAsync(DelegateResult<HttpResponseMessage> response, Context context)
-        {
-            //context.
-
-            //Console.WriteLine("About to call the fallback action. This is a good place to do some logging");
-            return Task.CompletedTask;
-        }
-
-        private Task<HttpResponseMessage> FallbackAction(DelegateResult<HttpResponseMessage> responseToFailedRequest, Context context, CancellationToken cancellationToken)
-        {
-            //Console.WriteLine("Fallback action is executing");
-
-            var request = responseToFailedRequest.Result.RequestMessage;
-            var content = request.Content;
-            _ = content.ReadAsStringAsync().Result;
-
-            HttpResponseMessage httpResponseMessage = new HttpResponseMessage(responseToFailedRequest.Result.StatusCode)
-            {
-                Content = new StringContent($"The fallback executed, the original error was {responseToFailedRequest.Result.Content.ReadAsStringAsync()}")
-            };
-            return Task.FromResult(httpResponseMessage);
         }
     }
 }

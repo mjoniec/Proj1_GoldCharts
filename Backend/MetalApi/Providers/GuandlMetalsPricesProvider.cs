@@ -21,40 +21,37 @@ namespace MetalApi.Providers
             _httpClientFactory = httpClientFactory;
         }
 
+        public async Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end)
+        {
+            string json;
+            var metalPrices = new MetalPrices();
+
+            if (metalType == MetalType.Gold)
+            {
+                json = await GetPrices(GoldPricesUrl);
+                metalPrices.Currency = Currency.AUD;
+            }
+            else
+            {
+                json = await GetPrices(SilverPricesUrl);
+                metalPrices.Currency = Currency.USD;
+            }
+
+            metalPrices = json
+                .Deserialize()
+                .Map(start, end);
+
+            metalPrices.DataSource = DataSource.GuandlApi;
+
+            return metalPrices;
+        }
+
         private async Task<string> GetPrices(string url)
         {
-            var httpClient = _httpClientFactory.CreateClient("QuandlService");
+            var httpClient = _httpClientFactory.CreateClient("QuandlService");//To config
             var httpResponse = await httpClient.GetAsync(url);
 
             return await httpResponse.Content.ReadAsStringAsync();
-        }
-
-        public async Task<MetalPrices> GetGoldPrices(DateTime start, DateTime end)
-        {
-            var json = await GetPrices(GoldPricesUrl);
-
-            var metalPrices = json
-                .Deserialize()
-                .Map(start, end);
-
-            metalPrices.DataSource = DataSource.GuandlApi;
-            metalPrices.Currency = Currency.AUD;
-
-            return metalPrices;
-        }
-
-        public async Task<MetalPrices> GetSilverPrices(DateTime start, DateTime end)
-        {
-            var json = await GetPrices(SilverPricesUrl);
-
-            var metalPrices = json
-                .Deserialize()
-                .Map(start, end);
-
-            metalPrices.DataSource = DataSource.GuandlApi;
-            metalPrices.Currency = Currency.USD;
-
-            return metalPrices;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MetalReadModel;
+using Model;
 using System;
 using System.Threading.Tasks;
 
@@ -6,7 +7,6 @@ namespace MetalApi.Providers
 {
     public interface IMetalsPricesProvider
     {
-        Task<MetalPrices> GetGoldPrices(DateTime start, DateTime end);
-        Task<MetalPrices> GetSilverPrices(DateTime start, DateTime end);
+        Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end);
     }
 }

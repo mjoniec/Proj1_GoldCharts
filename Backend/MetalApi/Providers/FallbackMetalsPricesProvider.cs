@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using MetalApi.GuandlModel;
+using MetalReadModel;
+using Model;
 using System;
 using System.IO;
 using System.Reflection;
@@ -8,35 +10,32 @@ namespace MetalApi.Providers
 {
     public class FallbackMetalsPricesProvider : IMetalsPricesProvider
     {
-        public async Task<MetalPrices> GetGoldPrices(DateTime start, DateTime end)
+        public async Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end)
         {
-            var json = await File.ReadAllTextAsync(
-                Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)
-                + "//goldPricesFallback.json");
+            string json;
+            var metalPrices = new MetalPrices();
+            string path;
+            
+            if (metalType == MetalType.Gold)
+            {
+                path = 
+                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + 
+                    "//MetalPricesFallackdata//goldPricesFallback.json";
 
-            var metalPrices = GetMetalsPrices(json, start, end);
+                metalPrices.Currency = Currency.AUD;
+            }
+            else
+            {
+                path =
+                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + 
+                    "//MetalPricesFallackdata//silverPricesFallback.json";
 
-            metalPrices.Currency = Currency.AUD;
+                metalPrices.Currency = Currency.USD;
+            }
 
-            return metalPrices;
-        }
+            json = await File.ReadAllTextAsync(path);
 
-        public async Task<MetalPrices> GetSilverPrices(DateTime start, DateTime end)
-        {
-            var json = await File.ReadAllTextAsync(
-                Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)
-                + "//silverPricesFallback.json");
-
-            var metalPrices = GetMetalsPrices(json, start, end);
-
-            metalPrices.Currency = Currency.USD;
-
-            return metalPrices;
-        }
-
-        private MetalPrices GetMetalsPrices(string json, DateTime start, DateTime end)
-        {
-            var metalPrices = json
+            metalPrices = json
                 .Deserialize()
                 .Map(start, end);
 
