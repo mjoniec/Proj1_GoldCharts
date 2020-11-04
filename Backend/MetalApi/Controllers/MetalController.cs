@@ -13,16 +13,16 @@ namespace MetalApi.Controllers
     {
         private readonly IMetalsPricesProvider _metalsPricesProvider;
 
-        public MetalController(IMetalsPricesProvider metalsPricesProvider)
+        public MetalController(IServiceProvider serviceProvider)
         {
-            _metalsPricesProvider = metalsPricesProvider;
+            _metalsPricesProvider = (IMetalsPricesProvider)serviceProvider.GetService(typeof(GuandlMetalsPricesProvider));
         }
 
         [HttpGet("{metalType}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get(MetalType metalType, DateTime start, DateTime end)
         {
-            var metalPrices = _metalsPricesProvider.Get(metalType, start, end);
+            var metalPrices = await _metalsPricesProvider.Get(metalType, start, end);
             
             if (metalPrices == null)
             {
