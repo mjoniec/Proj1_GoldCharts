@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MetalApi.Providers;
-using Microsoft.AspNetCore.WebUtilities;
 using Model;
 using Newtonsoft.Json;
 using Polly;
@@ -33,16 +30,9 @@ namespace MetalApi
             Context context,
             CancellationToken cancellationToken)
         {
-            var uri = responseToFailedRequest.Result.RequestMessage.RequestUri;
-            var query = QueryHelpers.ParseQuery(uri.Query);
-            var items = query.SelectMany(x => x.Value, (col, value) => new KeyValuePair<string, string>(col.Key, value))
-                .ToList()
-                .ToArray();
-
-            var metalPrices = _metalsPricesProvider.Get(
-                (MetalType)Enum.Parse(typeof(MetalType), items[0].Value),
-                DateTime.Parse(items[1].Value),
-                DateTime.Parse(items[2].Value)).Result;
+            var uri = responseToFailedRequest.Result.RequestMessage.RequestUri.ToString();
+            var metalType = uri.Contains("GOLD") ? MetalType.Gold : MetalType.Silver;
+            var metalPrices = _metalsPricesProvider.Get(metalType).Result;
 
             HttpResponseMessage httpResponseMessage = new HttpResponseMessage(responseToFailedRequest.Result.StatusCode)
             {

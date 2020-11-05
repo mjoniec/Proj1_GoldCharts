@@ -20,7 +20,7 @@ namespace MetalApi.Providers
             {
                 path = 
                     Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + 
-                    "//MetalPricesFallackdata//goldPricesFallback.json";
+                    "//MetalPricesFallbackData//goldPricesFallback.json";
 
                 metalPrices.Currency = Currency.AUD;
             }
@@ -28,7 +28,7 @@ namespace MetalApi.Providers
             {
                 path =
                     Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + 
-                    "//MetalPricesFallackdata//silverPricesFallback.json";
+                    "//MetalPricesFallbackData//silverPricesFallback.json";
 
                 metalPrices.Currency = Currency.USD;
             }
@@ -38,6 +38,40 @@ namespace MetalApi.Providers
             metalPrices = json
                 .Deserialize()
                 .Map(start, end);
+
+            metalPrices.DataSource = DataSource.Fallback;
+
+            return metalPrices;
+        }
+
+        public async Task<MetalPrices> Get(MetalType metalType)
+        {
+            string json;
+            var metalPrices = new MetalPrices();
+            string path;
+
+            if (metalType == MetalType.Gold)
+            {
+                path =
+                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) +
+                    "//MetalPricesFallbackData//goldPricesFallback.json";
+
+                metalPrices.Currency = Currency.AUD;
+            }
+            else
+            {
+                path =
+                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) +
+                    "//MetalPricesFallbackData//silverPricesFallback.json";
+
+                metalPrices.Currency = Currency.USD;
+            }
+
+            json = await File.ReadAllTextAsync(path);
+
+            metalPrices = json
+                .Deserialize()
+                .Map();
 
             metalPrices.DataSource = DataSource.Fallback;
 

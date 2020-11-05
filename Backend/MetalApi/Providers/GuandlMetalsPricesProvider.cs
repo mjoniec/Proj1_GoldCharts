@@ -46,6 +46,31 @@ namespace MetalApi.Providers
             return metalPrices;
         }
 
+        public async Task<MetalPrices> Get(MetalType metalType)
+        {
+            string json;
+            var metalPrices = new MetalPrices();
+
+            if (metalType == MetalType.Gold)
+            {
+                json = await GetPrices(GoldPricesUrl);
+                metalPrices.Currency = Currency.AUD;
+            }
+            else
+            {
+                json = await GetPrices(SilverPricesUrl);
+                metalPrices.Currency = Currency.USD;
+            }
+
+            metalPrices = json
+                .Deserialize()
+                .Map();
+
+            metalPrices.DataSource = DataSource.GuandlApi;
+
+            return metalPrices;
+        }
+
         private async Task<string> GetPrices(string url)
         {
             var httpClient = _httpClientFactory.CreateClient("QuandlService");//To config

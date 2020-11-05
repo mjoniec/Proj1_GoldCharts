@@ -32,6 +32,20 @@ namespace MetalApi.GuandlModel
             };
         }
 
+        internal static MetalPrices Map(this GuandlMetalModel guandlMetalModel)
+        {
+            return new MetalPrices
+            {
+                Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
+                .Select(d => new MetalPriceDate
+                {
+                    Date = d.Key,
+                    Value = d.Value
+                })
+                .ToList()
+            };
+        }
+
         private static Dictionary<DateTime, double> GetDailyGoldPricesFromExternalData(List<List<object>> data)
         {
             var dailyGoldPrices = new Dictionary<DateTime, double>();
@@ -52,7 +66,7 @@ namespace MetalApi.GuandlModel
         {
             var allChildren = AllChildren(JObject.Parse(json));
 
-            var metalDataJsonata = allChildren
+            var metalDataJsonata = allChildren//TODO continue from here
                 .First(c => c.Path.Contains("dataset"))
                 .Children<JObject>()
                 .First()
