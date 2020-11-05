@@ -32,11 +32,15 @@ namespace MetalApi
         {
             var uri = responseToFailedRequest.Result.RequestMessage.RequestUri.ToString();
             var metalType = uri.Contains("GOLD") ? MetalType.Gold : MetalType.Silver;
+            //var metalPrices = _metalsPricesProvider.Get(metalType).Result;
             var metalPrices = _metalsPricesProvider.Get(metalType).Result;
 
             HttpResponseMessage httpResponseMessage = new HttpResponseMessage(responseToFailedRequest.Result.StatusCode)
             {
-                Content = new StringContent(JsonConvert.SerializeObject(metalPrices), Encoding.UTF8, "application/json")
+                Content = new StringContent(metalPrices, Encoding.UTF8, "application/json")
+                
+                //Content = new StringContent(JsonConvert.SerializeObject(metalPrices), Encoding.UTF8, "application/json")
+
                 //new StringContent($"The fallback executed, the original error was " +
                 //    $"{responseToFailedRequest.Result.Content.ReadAsStringAsync()}")
             };

@@ -10,72 +10,64 @@ namespace MetalApi.Providers
 {
     public class FallbackMetalsPricesProvider : IMetalsPricesProvider
     {
-        public async Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end)
-        {
-            string json;
-            var metalPrices = new MetalPrices();
-            string path;
+        //public async Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end)
+        //{
+        //    string json;
+        //    var metalPrices = new MetalPrices();
+        //    string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) 
+        //        + "//MetalPricesFallbackData//";
             
-            if (metalType == MetalType.Gold)
-            {
-                path = 
-                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + 
-                    "//MetalPricesFallbackData//goldPricesFallback.json";
+        //    if (metalType == MetalType.Gold)
+        //    {
+        //        path += "goldPricesFallback.json";
+        //        metalPrices.Currency = Currency.AUD;
+        //    }
+        //    else
+        //    {
+        //        path += "silverPricesFallback.json";
+        //        metalPrices.Currency = Currency.USD;
+        //    }
 
-                metalPrices.Currency = Currency.AUD;
-            }
-            else
-            {
-                path =
-                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + 
-                    "//MetalPricesFallbackData//silverPricesFallback.json";
+        //    json = await File.ReadAllTextAsync(path);
 
-                metalPrices.Currency = Currency.USD;
-            }
+        //    metalPrices = json
+        //        .Deserialize()
+        //        .Map(start, end);
 
-            json = await File.ReadAllTextAsync(path);
+        //    metalPrices.DataSource = DataSource.Fallback;
 
-            metalPrices = json
-                .Deserialize()
-                .Map(start, end);
+        //    return metalPrices;
+        //}
 
-            metalPrices.DataSource = DataSource.Fallback;
-
-            return metalPrices;
-        }
-
-        public async Task<MetalPrices> Get(MetalType metalType)
+        public async Task<string> Get(MetalType metalType)
         {
             string json;
-            var metalPrices = new MetalPrices();
-            string path;
+            //var metalPrices = new MetalPrices();
+            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)
+                + "//MetalPricesFallbackData//";
 
             if (metalType == MetalType.Gold)
             {
-                path =
-                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) +
-                    "//MetalPricesFallbackData//goldPricesFallback.json";
-
-                metalPrices.Currency = Currency.AUD;
+                path += "goldPricesFallback.json";
+                //metalPrices.Currency = Currency.AUD;
             }
             else
             {
-                path =
-                    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) +
-                    "//MetalPricesFallbackData//silverPricesFallback.json";
-
-                metalPrices.Currency = Currency.USD;
+                path += "silverPricesFallback.json";
+                //metalPrices.Currency = Currency.USD;
             }
 
             json = await File.ReadAllTextAsync(path);
 
-            metalPrices = json
-                .Deserialize()
-                .Map();
+            return json;
 
-            metalPrices.DataSource = DataSource.Fallback;
+            //metalPrices = json
+            //    .Deserialize()
+            //    .Map();
 
-            return metalPrices;
+            //metalPrices.DataSource = DataSource.Fallback;
+
+            //return metalPrices;
         }
     }
 }

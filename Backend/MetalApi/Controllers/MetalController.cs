@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Model;
 using System;
 using MetalApi.Providers;
+using MetalApi.GuandlModel;
 
 namespace MetalApi.Controllers
 {
@@ -22,8 +23,12 @@ namespace MetalApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get(MetalType metalType, DateTime start, DateTime end)
         {
-            var metalPrices = await _metalsPricesProvider.Get(metalType, start, end);
-            
+            var json = await _metalsPricesProvider.Get(metalType/*, start, end*/);
+
+            var metalPrices = json
+                .Deserialize()
+                .Map(start, end);
+
             if (metalPrices == null)
             {
                 return NoContent();
