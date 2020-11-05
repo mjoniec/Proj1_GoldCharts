@@ -13,10 +13,10 @@ namespace GoldChartsApi.Services
 {
     public class CombineCurrencyAndMetalDataService
     {
-        private readonly IMetalsPricesProvider _metalsPricesProvider;
+        private readonly IMetalProvider _metalsPricesProvider;
         private readonly ICurrenciesProvider _currenciesRepository;
 
-        public CombineCurrencyAndMetalDataService(IMetalsPricesProvider metalsPricesProvider,
+        public CombineCurrencyAndMetalDataService(IMetalProvider metalsPricesProvider,
             ICurrenciesProvider currenciesExchangeDataRepository)
         {
             _metalsPricesProvider = metalsPricesProvider;

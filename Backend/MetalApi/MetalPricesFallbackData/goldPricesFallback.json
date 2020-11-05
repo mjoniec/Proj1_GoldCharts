@@ -3,7 +3,7 @@
     "id": 6442329,
     "dataset_code": "GOLD_DAILY_AUD",
     "database_code": "WGC",
-    "name": "Gold Prices (Daily) - Currency AUD",
+    "name": "Gold Prices (Daily) - Currency AUD - Fallback",
     "description": "All values are national currency units per troy ounce (except for index values). The World Gold Council is the market development organization for the gold industry. Working within the investment, jewelery and technology sectors, as well as engaging in government affairs, our purpose is to provide industry leadership, whilst stimulating and sustaining demand for gold. We develop gold-backed solutions, services and markets, based on true market insight. As a result, we create structural shifts in demand for gold across key market sectors. We provide insights into the international gold markets, helping people to better understand the wealth preservation qualities of gold and its role in meeting the social and environmental needs of society. Based in the UK, with operations in India, the Far East, Europe and the US, the World Gold Council is an association whose 23 members comprise the world's leading gold mining companies.",
     "refreshed_at": "2020-03-18 18:03:12 UTC",
     "newest_available_date": "2020-03-13",

@@ -12,11 +12,11 @@ namespace MetalApi.Controllers
     [ApiController]
     public class MetalController : ControllerBase
     {
-        private readonly IMetalsPricesProvider _metalsPricesProvider;
+        private readonly IMetalProvider _metalsPricesProvider;
 
         public MetalController(IServiceProvider serviceProvider)
         {
-            _metalsPricesProvider = (IMetalsPricesProvider)serviceProvider.GetService(typeof(GuandlMetalsPricesProvider));
+            _metalsPricesProvider = (IMetalProvider)serviceProvider.GetService(typeof(GuandlMetalProvider));
         }
 
         [HttpGet("{metalType}/{start}/{end}")]

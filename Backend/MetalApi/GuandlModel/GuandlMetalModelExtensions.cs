@@ -21,28 +21,26 @@ namespace MetalApi.GuandlModel
         {
             return new MetalPrices
             {
-                Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
-                .Select(d => new MetalPriceDate
-                {
-                    Date = d.Key,
-                    Value = d.Value
-                })
-                .Where(m => m.Date >= start && m.Date <= end)
-                .ToList()
-            };
-        }
+                //quite some internal know how here ... - refactor it somehow?
 
-        internal static MetalPrices Map(this GuandlMetalModel guandlMetalModel)
-        {
-            return new MetalPrices
-            {
                 Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
-                .Select(d => new MetalPriceDate
-                {
-                    Date = d.Key,
-                    Value = d.Value
-                })
-                .ToList()
+                    .Select(d => new MetalPriceDate
+                    {
+                        Date = d.Key,
+                        Value = d.Value
+                    })
+                    .Where(m => m.Date >= start && m.Date <= end)
+                    .ToList(),
+                
+                DataSource = guandlMetalModel.Name.Contains("Fallback")
+                    ? DataSource.Fallback 
+                    : DataSource.GuandlApi,
+                
+                Currency = guandlMetalModel.Name.Contains("Silver") 
+                    ? Model.Currency.USD 
+                    : (guandlMetalModel.Name.Contains("Gold") 
+                        ? Model.Currency.AUD 
+                        : Model.Currency.EUR)//this does not feel right
             };
         }
 
@@ -66,7 +64,7 @@ namespace MetalApi.GuandlModel
         {
             var allChildren = AllChildren(JObject.Parse(json));
 
-            var metalDataJsonata = allChildren//TODO continue from here
+            var metalDataJsonata = allChildren
                 .First(c => c.Path.Contains("dataset"))
                 .Children<JObject>()
                 .First()

@@ -21,13 +21,13 @@ namespace MetalApi
             services.AddScoped<HttpFallback>();
 
             services
-                .AddScoped<GuandlMetalsPricesProvider>()
-                .AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>(
-                    s => s.GetService<GuandlMetalsPricesProvider>());
+                .AddScoped<GuandlMetalProvider>()
+                .AddScoped<IMetalProvider, GuandlMetalProvider>(
+                    s => s.GetService<GuandlMetalProvider>());
 
             services
                 .AddScoped<FallbackMetalsPricesProvider>()
-                .AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>(
+                .AddScoped<IMetalProvider, FallbackMetalsPricesProvider>(
                     s => s.GetService<FallbackMetalsPricesProvider>());
 
             //TODO: figure out better way to set up HttpFallback

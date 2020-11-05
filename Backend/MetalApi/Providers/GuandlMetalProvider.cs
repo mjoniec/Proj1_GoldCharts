@@ -1,13 +1,10 @@
-﻿using MetalApi.GuandlModel;
-using MetalReadModel;
-using Model;
-using System;
+﻿using Model;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MetalApi.Providers
 {
-    public class GuandlMetalsPricesProvider : IMetalsPricesProvider
+    public class GuandlMetalProvider : IMetalProvider
     {
         //TODO: make readonly and from json config
         //private const string GoldPricesUrl = "https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_AUD.json";
@@ -16,66 +13,28 @@ namespace MetalApi.Providers
         private const string SilverPricesUrl = "LBMA/SILVER.json";
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public GuandlMetalsPricesProvider(IHttpClientFactory httpClientFactory)
+        public GuandlMetalProvider(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
-
-        //public async Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end)
-        //{
-        //    string json;
-        //    var metalPrices = new MetalPrices();
-
-        //    if (metalType == MetalType.Gold)
-        //    {
-        //        json = await GetPrices(GoldPricesUrl);
-        //        metalPrices.Currency = Currency.AUD;
-        //    }
-        //    else
-        //    {
-        //        json = await GetPrices(SilverPricesUrl);
-        //        metalPrices.Currency = Currency.USD;
-        //    }
-
-        //    metalPrices = json
-        //        .Deserialize()
-        //        .Map(start, end);
-
-        //    metalPrices.DataSource = DataSource.GuandlApi;
-
-        //    return metalPrices;
-        //}
 
         public async Task<string> Get(MetalType metalType)
         {
             string url;
             string json;
-            //var metalPrices = new MetalPrices();
             
-
             if (metalType == MetalType.Gold)
             {
                 url = GoldPricesUrl;
-
-                //metalPrices.Currency = Currency.AUD;
             }
             else
             {
                 url = SilverPricesUrl;
-
-                //metalPrices.Currency = Currency.USD;
             }
 
             json = await GetPrices(url);
 
             return json;
-            //metalPrices = json
-            //    .Deserialize()
-            //    .Map();
-
-            //metalPrices.DataSource = DataSource.GuandlApi;
-
-            //return metalPrices;
         }
 
         private async Task<string> GetPrices(string url)

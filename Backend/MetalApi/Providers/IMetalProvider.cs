@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 
 namespace MetalApi.Providers
 {
-    public interface IMetalsPricesProvider
+    public interface IMetalProvider
     {
         Task<string> Get(MetalType metalType);
-        //Task<MetalPrices> Get(MetalType metalType, DateTime start, DateTime end);
     }
 }
