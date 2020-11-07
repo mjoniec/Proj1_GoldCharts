@@ -36,7 +36,7 @@ namespace GoldChartsApi
             services.AddScoped<CombineCurrencyAndMetalDataService>();
             
             //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
-            services.AddScoped<ICurrenciesProvider, CurrenciesFallback>();
+            services.AddScoped<ICurrencyProvider, CurrencyFallback>();
 
             //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
             //services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();

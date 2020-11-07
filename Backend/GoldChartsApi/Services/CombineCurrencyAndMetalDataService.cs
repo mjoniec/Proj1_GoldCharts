@@ -14,10 +14,10 @@ namespace GoldChartsApi.Services
     public class CombineCurrencyAndMetalDataService
     {
         private readonly IMetalProvider _metalsPricesProvider;
-        private readonly ICurrenciesProvider _currenciesRepository;
+        private readonly ICurrencyProvider _currenciesRepository;
 
         public CombineCurrencyAndMetalDataService(IMetalProvider metalsPricesProvider,
-            ICurrenciesProvider currenciesExchangeDataRepository)
+            ICurrencyProvider currenciesExchangeDataRepository)
         {
             _metalsPricesProvider = metalsPricesProvider;
             _currenciesRepository = currenciesExchangeDataRepository;
@@ -51,10 +51,10 @@ namespace GoldChartsApi.Services
             return null;
         }
 
-        private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, CurrencyRates rates)
+        private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, CurrencyRates currencyRates)
         {
             var metalPricesFilled = FillMissingDates(metalPrices.Prices);
-            var ratesFilled = FillMissingDates(rates.Rates);
+            var ratesFilled = FillMissingDates(currencyRates.Rates);
             var prices = new List<MetalPriceDate>();
 
             foreach (var p in metalPricesFilled)

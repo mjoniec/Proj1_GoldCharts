@@ -1,74 +1,78 @@
 ﻿using CommonReadModel;
-using CurrencyDataProvider.Initialize;
 using CurrencyReadModel;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CurrencyDataProvider.Providers
 {
-    public class CurrenciesFallback : ICurrenciesProvider
+    public class CurrencyRepository : ICurrencyProvider
     {
+        private readonly CurrencyContext _context;
+
+        public CurrencyRepository(CurrencyContext context)
+        {
+            _context = context;
+        }
+
         public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)
         {
             var exchangeRates = new CurrencyRates
             {
-                DataSource = DataSource.Fallback,
+                DataSource = DataSource.Database,
                 BaseCurrency = baseCurrency.ToString(),
                 RateCurrency = rateCurrency.ToString()
             };
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = USD_AUD_Initialize
-                    .Generate()
-                    .Where(c => c.Date >= start && c.Date <= end)
-                    .ToList();
+                exchangeRates.Rates = new List<CurrencyRateDate>(
+                    _context.USD_AUD.Where(c => c.Date >= start && c.Date <= end));
             }
 
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.USD)
             {
-                exchangeRates.Rates = USD_AUD_Initialize
-                    .Generate()
+                var AUD_USD = _context.USD_AUD
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
 
-                exchangeRates.Rates.ForEach(r => r.Value = 1.0 / r.Value);
+                AUD_USD.ForEach(e => e.Value = 1 / e.Value);
+
+                exchangeRates.Rates = new List<CurrencyRateDate>(AUD_USD);
             }
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.EUR)
             {
-                exchangeRates.Rates = USD_EUR_Initialize
-                    .Generate()
-                    .Where(c => c.Date >= start && c.Date <= end)
-                    .ToList();
+                exchangeRates.Rates = new List<CurrencyRateDate>(_context.USD_EUR
+                    .Where(c => c.Date >= start && c.Date <= end));
             }
 
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.USD)
             {
-                exchangeRates.Rates = USD_EUR_Initialize
-                    .Generate()
+                var EUR_USD = _context.USD_EUR
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
 
-                exchangeRates.Rates.ForEach(r => r.Value = 1.0 / r.Value);
+                EUR_USD.ForEach(e => e.Value = 1 / e.Value);
+
+                exchangeRates.Rates = new List<CurrencyRateDate>(EUR_USD);
             }
 
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = EUR_AUD_Initialize
-                    .Generate()
-                    .Where(c => c.Date >= start && c.Date <= end)
-                    .ToList();
+                exchangeRates.Rates = new List<CurrencyRateDate>(_context.EUR_AUD
+                    .Where(c => c.Date >= start && c.Date <= end));
             }
 
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.EUR)
             {
-                exchangeRates.Rates = EUR_AUD_Initialize
-                    .Generate()
+                var AUD_EUR = _context.EUR_AUD
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
 
-                exchangeRates.Rates.ForEach(r => r.Value = 1.0 / r.Value);
+                AUD_EUR.ForEach(e => e.Value = 1 / e.Value);
+
+                exchangeRates.Rates = new List<CurrencyRateDate>(AUD_EUR);
             }
 
             return exchangeRates;

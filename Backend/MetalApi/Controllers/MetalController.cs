@@ -19,11 +19,11 @@ namespace MetalApi.Controllers
             _metalsPricesProvider = (IMetalProvider)serviceProvider.GetService(typeof(GuandlMetalProvider));
         }
 
-        [HttpGet("{metalType}/{start}/{end}")]
+        [HttpGet("{metal}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get(Metal metalType, DateTime start, DateTime end)
+        public async Task<IActionResult> Get(Metal metal, DateTime start, DateTime end)
         {
-            var json = await _metalsPricesProvider.Get(metalType/*, start, end*/);
+            var json = await _metalsPricesProvider.Get(metal);
 
             var metalPrices = json
                 .Deserialize()
