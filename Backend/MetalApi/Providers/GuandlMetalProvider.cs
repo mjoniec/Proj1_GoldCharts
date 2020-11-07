@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using CommonReadModel;
 using System.Net.Http;
 using System.Threading.Tasks;
 

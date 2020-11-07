@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CurrencyDataProvider.ReadModel
+namespace CurrencyReadModel
 {
     public class CurrencyRates
     {

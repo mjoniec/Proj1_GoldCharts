@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonReadModel\CommonReadModel.csproj" />
     <ProjectReference Include="..\MetalReadModel\MetalReadModel.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 

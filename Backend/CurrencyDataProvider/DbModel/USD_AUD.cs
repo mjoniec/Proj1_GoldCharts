@@ -1,4 +1,4 @@
-﻿using CurrencyDataProvider.ReadModel;
+﻿using CurrencyReadModel;
 
 namespace CurrencyDataProvider.DbModel
 {

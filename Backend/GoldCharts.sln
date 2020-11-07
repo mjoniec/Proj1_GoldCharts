@@ -7,13 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldChartsApi", "GoldCharts
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyDataProvider", "CurrencyDataProvider\CurrencyDataProvider.csproj", "{39B48D94-BF43-4B2B-A76D-2F31372064AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{A0E087D0-6A29-40F4-9BA4-73BB64B3D551}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalApi", "MetalApi\MetalApi.csproj", "{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalReadModel", "MetalReadModel\MetalReadModel.csproj", "{0C05E756-08C3-4DEC-8E78-CB29F0E75929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyApi", "CurrencyApi\CurrencyApi.csproj", "{CA8AADC7-5507-4E0F-965A-927712F67A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyApi", "CurrencyApi\CurrencyApi.csproj", "{CA8AADC7-5507-4E0F-965A-927712F67A69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyReadModel", "CurrencyReadModel\CurrencyReadModel.csproj", "{983334AF-0D9D-4D12-8661-38D699853E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonReadModel", "CommonReadModel\CommonReadModel.csproj", "{63791890-4E58-4F26-9652-92F652BA96CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadModel", "ReadModel", "{A4CA083F-9DEE-4696-9449-1329A4C56FD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +33,6 @@ Global
 		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0E087D0-6A29-40F4-9BA4-73BB64B3D551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0E087D0-6A29-40F4-9BA4-73BB64B3D551}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0E087D0-6A29-40F4-9BA4-73BB64B3D551}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0E087D0-6A29-40F4-9BA4-73BB64B3D551}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,9 +45,22 @@ Global
 		{CA8AADC7-5507-4E0F-965A-927712F67A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA8AADC7-5507-4E0F-965A-927712F67A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA8AADC7-5507-4E0F-965A-927712F67A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{983334AF-0D9D-4D12-8661-38D699853E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{983334AF-0D9D-4D12-8661-38D699853E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{983334AF-0D9D-4D12-8661-38D699853E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{983334AF-0D9D-4D12-8661-38D699853E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63791890-4E58-4F26-9652-92F652BA96CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63791890-4E58-4F26-9652-92F652BA96CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63791890-4E58-4F26-9652-92F652BA96CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63791890-4E58-4F26-9652-92F652BA96CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0C05E756-08C3-4DEC-8E78-CB29F0E75929} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
+		{983334AF-0D9D-4D12-8661-38D699853E13} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
+		{63791890-4E58-4F26-9652-92F652BA96CE} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BBD821D-8436-44FD-B96E-89C06CF2D116}

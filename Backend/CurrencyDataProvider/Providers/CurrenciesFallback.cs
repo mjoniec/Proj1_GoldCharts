@@ -1,6 +1,6 @@
-﻿using CurrencyDataProvider.Initialize;
-using CurrencyDataProvider.ReadModel;
-using Model;
+﻿using CommonReadModel;
+using CurrencyDataProvider.Initialize;
+using CurrencyReadModel;
 using System;
 using System.Linq;
 

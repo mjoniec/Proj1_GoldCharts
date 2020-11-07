@@ -37,10 +37,10 @@ namespace MetalApi.GuandlModel
                     : DataSource.GuandlApi,
                 
                 Currency = guandlMetalModel.Name.Contains("Silver")
-                    ? Model.Currency.USD 
+                    ? CommonReadModel.Currency.USD 
                     : (guandlMetalModel.Name.Contains("Gold")
-                        ? Model.Currency.AUD 
-                        : Model.Currency.EUR)//this does not feel right
+                        ? CommonReadModel.Currency.AUD 
+                        : CommonReadModel.Currency.EUR)//this does not feel right
             };
         }
 

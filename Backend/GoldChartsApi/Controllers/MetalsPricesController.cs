@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using GoldChartsApi.Services;
 using System.Threading.Tasks;
-using Model;
 using System;
+using CommonReadModel;
 
 namespace GoldChartsApi.Controllers
 {

@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using CommonReadModel;
 using System.Threading.Tasks;
 
 namespace MetalApi.Providers

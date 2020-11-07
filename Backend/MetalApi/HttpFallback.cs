@@ -3,8 +3,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CommonReadModel;
 using MetalApi.Providers;
-using Model;
 using Polly;
 
 namespace MetalApi

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
-using Model;
 using System;
 using MetalApi.Providers;
 using MetalApi.GuandlModel;
+using CommonReadModel;
 
 namespace MetalApi.Controllers
 {

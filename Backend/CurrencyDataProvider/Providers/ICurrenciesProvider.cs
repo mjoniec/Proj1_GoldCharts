@@ -1,5 +1,5 @@
-﻿using CurrencyDataProvider.ReadModel;
-using Model;
+﻿using CommonReadModel;
+using CurrencyReadModel;
 using System;
 
 namespace CurrencyDataProvider.Providers

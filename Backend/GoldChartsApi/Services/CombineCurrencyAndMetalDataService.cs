@@ -1,9 +1,9 @@
-﻿using CurrencyDataProvider.Providers;
-using CurrencyDataProvider.ReadModel;
+﻿using CommonReadModel;
+using CurrencyDataProvider.Providers;
+using CurrencyReadModel;
 using MetalApi.Providers;
 using MetalReadModel;
 using Microsoft.EntityFrameworkCore.Internal;
-using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

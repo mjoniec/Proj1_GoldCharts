@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using CommonReadModel;
 
 namespace MetalReadModel
 {

@@ -1,5 +1,5 @@
 ﻿using CurrencyDataProvider.DbModel;
-using CurrencyDataProvider.ReadModel;
+using CurrencyReadModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

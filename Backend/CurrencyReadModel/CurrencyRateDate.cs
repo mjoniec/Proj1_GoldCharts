@@ -1,6 +1,6 @@
-﻿using Model;
+﻿using CommonReadModel;
 
-namespace CurrencyDataProvider.ReadModel
+namespace CurrencyReadModel
 {
     public class CurrencyRateDate : ValueDate
     {
