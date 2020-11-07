@@ -15,7 +15,8 @@ namespace CurrencyApi.Controllers
 
         public CurrencyController(IServiceProvider serviceProvider)
         {
-            _currencyProvider = (ICurrencyProvider)serviceProvider.GetService(typeof(CurrencyRepository));
+            //_currencyProvider = (ICurrencyProvider)serviceProvider.GetService(typeof(CurrencyRepository));
+            _currencyProvider = (ICurrencyProvider)serviceProvider.GetService(typeof(CurrencyFallback));
         }
 
         [HttpGet("{baseCurrency}/{rateCurrency}/{start}/{end}")]

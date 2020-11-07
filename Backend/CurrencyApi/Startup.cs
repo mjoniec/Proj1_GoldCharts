@@ -1,6 +1,8 @@
+using CurrencyDataProvider;
 using CurrencyDataProvider.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,10 +19,16 @@ namespace CurrencyApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddScoped<CurrencyRepository>()
-                .AddScoped<ICurrencyProvider, CurrencyRepository>(
-                    s => s.GetService<CurrencyRepository>());
+            services.AddDbContext<CurrencyContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
+            //services.AddScoped<ICurrencyProvider, CurrencyFallback>();
+
+            //services
+            //    .AddScoped<CurrencyRepository>()
+            //    .AddScoped<ICurrencyProvider, CurrencyRepository>(
+            //        s => s.GetService<CurrencyRepository>());
 
             services
                 .AddScoped<CurrencyFallback>()
