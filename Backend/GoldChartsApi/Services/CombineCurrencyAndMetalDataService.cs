@@ -25,7 +25,7 @@ namespace GoldChartsApi.Services
 
         public async Task<MetalPrices> GetMetalPricesInCurrency(
             Currency currency, 
-            MetalType metal,
+            Metal metal,
             DateTime start,
             DateTime end)
         {

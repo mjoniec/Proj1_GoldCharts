@@ -36,9 +36,9 @@ namespace MetalApi.GuandlModel
                     ? DataSource.Fallback 
                     : DataSource.GuandlApi,
                 
-                Currency = guandlMetalModel.Name.Contains("Silver") 
+                Currency = guandlMetalModel.Name.Contains("Silver")
                     ? Model.Currency.USD 
-                    : (guandlMetalModel.Name.Contains("Gold") 
+                    : (guandlMetalModel.Name.Contains("Gold")
                         ? Model.Currency.AUD 
                         : Model.Currency.EUR)//this does not feel right
             };

@@ -21,7 +21,7 @@ namespace MetalApi.Controllers
 
         [HttpGet("{metalType}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get(MetalType metalType, DateTime start, DateTime end)
+        public async Task<IActionResult> Get(Metal metalType, DateTime start, DateTime end)
         {
             var json = await _metalsPricesProvider.Get(metalType/*, start, end*/);
 

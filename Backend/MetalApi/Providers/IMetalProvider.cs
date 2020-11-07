@@ -5,6 +5,6 @@ namespace MetalApi.Providers
 {
     public interface IMetalProvider
     {
-        Task<string> Get(MetalType metalType);
+        Task<string> Get(Metal metalType);
     }
 }

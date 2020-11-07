@@ -30,7 +30,7 @@ namespace MetalApi
             CancellationToken cancellationToken)
         {
             var uri = responseToFailedRequest.Result.RequestMessage.RequestUri.ToString();
-            var metalType = uri.Contains("GOLD") ? MetalType.Gold : MetalType.Silver;
+            var metalType = uri.Contains("GOLD") ? Metal.Gold : Metal.Silver;
             var metalPrices = _metalsPricesProvider.Get(metalType).Result;
 
             HttpResponseMessage httpResponseMessage = new HttpResponseMessage(responseToFailedRequest.Result.StatusCode)

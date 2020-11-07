@@ -1,6 +1,6 @@
 ﻿namespace Model
 {
-    public enum MetalType
+    public enum Metal
     {
         Gold,
         Silver

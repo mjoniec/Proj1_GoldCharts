@@ -18,12 +18,12 @@ namespace MetalApi.Providers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> Get(MetalType metalType)
+        public async Task<string> Get(Metal metal)
         {
             string url;
             string json;
             
-            if (metalType == MetalType.Gold)
+            if (metal == Metal.Gold)
             {
                 url = GoldPricesUrl;
             }

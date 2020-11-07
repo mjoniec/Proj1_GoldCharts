@@ -22,7 +22,7 @@ namespace GoldChartsApi.Controllers
         //https://localhost:44314/api/MetalsPrices/AUD/Gold/2000-1-1/2005-1-1
         [HttpGet("{currency}/{metal}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get(Currency currency, MetalType metal, DateTime start, DateTime end)
+        public async Task<IActionResult> Get(Currency currency, Metal metal, DateTime start, DateTime end)
         {
             var prices = await _combineCurrencyAndMetalDataService.GetMetalPricesInCurrency(currency, metal, start, end);
 

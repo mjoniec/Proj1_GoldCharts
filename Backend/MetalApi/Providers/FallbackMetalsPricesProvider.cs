@@ -7,13 +7,13 @@ namespace MetalApi.Providers
 {
     public class FallbackMetalsPricesProvider : IMetalProvider
     {
-        public async Task<string> Get(MetalType metalType)
+        public async Task<string> Get(Metal metalType)
         {
             string json;
             var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)
                 + "//MetalPricesFallbackData//";
 
-            if (metalType == MetalType.Gold)
+            if (metalType == Metal.Gold)
             {
                 path += "goldPricesFallback.json";
             }
