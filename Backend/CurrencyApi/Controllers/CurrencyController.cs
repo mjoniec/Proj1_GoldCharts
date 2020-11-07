@@ -19,6 +19,7 @@ namespace CurrencyApi.Controllers
             _currencyProvider = (ICurrencyProvider)serviceProvider.GetService(typeof(CurrencyFallback));
         }
 
+        //http://localhost:54782/api/currency/USD/EUR/2000-1-1/2005-1-1
         [HttpGet("{baseCurrency}/{rateCurrency}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)

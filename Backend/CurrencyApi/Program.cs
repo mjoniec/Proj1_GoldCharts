@@ -13,23 +13,23 @@ namespace CurrencyApi
         {
             var host = CreateHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
 
-                try
-                {
-                    var context = services.GetRequiredService<CurrencyContext>();
+            //    try
+            //    {
+            //        var context = services.GetRequiredService<CurrencyContext>();
 
-                    DbInitializer.Initialize(context);
-                }
-                catch (Exception ex)
-                {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
+            //        DbInitializer.Initialize(context);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        var logger = services.GetRequiredService<ILogger<Program>>();
 
-                    logger.LogError(ex, "An error occurred while seeding the database.");
-                }
-            }
+            //        logger.LogError(ex, "An error occurred while seeding the database.");
+            //    }
+            //}
 
             host.Run();
         }

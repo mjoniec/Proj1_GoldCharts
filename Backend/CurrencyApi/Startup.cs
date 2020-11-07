@@ -19,8 +19,10 @@ namespace CurrencyApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CurrencyContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //TODO: add fallback service for DB and sort out DI for actual DB
+
+            //services.AddDbContext<CurrencyContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
             //services.AddScoped<ICurrencyProvider, CurrencyFallback>();
