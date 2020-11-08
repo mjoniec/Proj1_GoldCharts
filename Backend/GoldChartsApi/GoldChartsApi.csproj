@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CurrencyDataProvider\CurrencyDataProvider.csproj" />
-    <ProjectReference Include="..\MetalApi\MetalApi.csproj" />
+    <ProjectReference Include="..\CurrencyReadModel\CurrencyReadModel.csproj" />
     <ProjectReference Include="..\MetalReadModel\MetalReadModel.csproj" />
   </ItemGroup>
 

@@ -1,26 +1,22 @@
 ﻿using CommonReadModel;
-using CurrencyDataProvider.Providers;
 using CurrencyReadModel;
-using MetalApi.Providers;
 using MetalReadModel;
-using Microsoft.EntityFrameworkCore.Internal;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace GoldChartsApi.Services
 {
     public class CombineCurrencyAndMetalDataService
     {
-        private readonly IMetalProvider _metalsPricesProvider;
-        private readonly ICurrencyProvider _currenciesRepository;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public CombineCurrencyAndMetalDataService(IMetalProvider metalsPricesProvider,
-            ICurrencyProvider currenciesExchangeDataRepository)
+        public CombineCurrencyAndMetalDataService(IHttpClientFactory httpClientFactory)
         {
-            _metalsPricesProvider = metalsPricesProvider;
-            _currenciesRepository = currenciesExchangeDataRepository;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<MetalPrices> GetMetalPricesInCurrency(
@@ -29,10 +25,7 @@ namespace GoldChartsApi.Services
             DateTime start,
             DateTime end)
         {
-            //if (metal == MetalType.Gold && currency == Currency.AUD)
-            //{
-            //    return await _metalsPricesProvider.GetGoldPrices(start, end);
-            //}
+            return await GetMetalPrices(metal, start, end);
 
             //if (metal == MetalType.Gold && currency == Currency.USD)
             //{
@@ -42,13 +35,17 @@ namespace GoldChartsApi.Services
 
             //    return await Task.FromResult(prices);
             //}
+        }
 
-            //if (metal == MetalType.Silver && currency == Currency.USD)
-            //{
-            //    return await _metalsPricesProvider.GetSilverPrices(start, end);
-            //}
+        private async Task<MetalPrices> GetMetalPrices(Metal metal, DateTime start, DateTime end)
+        {
+            var url = metal.ToString() + "/" + start.ToString("yyyy-MM-dd") + "/" + end.ToString("yyyy-MM-dd");
+            var httpClient = _httpClientFactory.CreateClient("MetalApi");
+            var httpResponse = await httpClient.GetAsync(url);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+            var metalPrices = JsonConvert.DeserializeObject<MetalPrices>(json);
 
-            return null;
+            return metalPrices;
         }
 
         private MetalPrices ConvertMetalPricesToCurrency(MetalPrices metalPrices, CurrencyRates currencyRates)
