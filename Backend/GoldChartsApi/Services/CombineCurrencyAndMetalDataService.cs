@@ -10,6 +10,16 @@ using System.Threading.Tasks;
 
 namespace GoldChartsApi.Services
 {
+    /// <summary>
+    /// Responsibility of this service is to:
+    /// - sent an http request to an api services 
+    /// - get metal prices data daily
+    /// - get currency exchange rates data daily
+    /// - fill any gaps in daily prices
+    /// - mesh metal and currency data to match requested currency and metal 
+    /// - filter results by start end dates
+    /// TODO: maybe some refactor as it violiates Single Responsibility Principle ?
+    /// </summary>
     public class CombineCurrencyAndMetalDataService
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -25,16 +35,47 @@ namespace GoldChartsApi.Services
             DateTime start,
             DateTime end)
         {
-            return await GetMetalPrices(metal, start, end);
+            //unknow in which currency metal service is going to provide data
+            var metalPrices = await GetMetalPrices(metal, start, end);
 
-            //if (metal == MetalType.Gold && currency == Currency.USD)
-            //{
-            //    var prices = ConvertMetalPricesToCurrency(
-            //        await _metalsPricesProvider.GetGoldPrices(start, end),
-            //        _currenciesRepository.GetExchangeRates(Currency.AUD, Currency.USD, start, end));
+            //no need to get exchange rate to calculate metal price in different currency
+            if (metalPrices.Currency == currency)
+            {
+                //TODO figure a better cast
+                var metalPricesFilled = new List<MetalPriceDate>();
 
-            //    return await Task.FromResult(prices);
-            //}
+                foreach (var p in FillMissingDates(metalPrices.Prices))
+                {
+                    metalPricesFilled.Add(new MetalPriceDate
+                    {
+                        Date = p.Date,
+                        Value = p.Value
+                    });
+                }
+
+                return new MetalPrices
+                {
+                    Currency = metalPrices.Currency,
+                    DataSource = metalPrices.DataSource,
+                    Prices = metalPricesFilled
+                };
+            }
+            
+            var currencyRates = await GetCurrencyRates(metalPrices.Currency, currency, start, end);
+            var metalPricesConverted = ConvertMetalPricesToCurrency(metalPrices, currencyRates);
+
+            return metalPricesConverted;
+        }
+
+        private async Task<CurrencyRates> GetCurrencyRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)
+        {
+            var url = baseCurrency.ToString() + "/" + rateCurrency.ToString() + "/" + start.ToString("yyyy-MM-dd") + "/" + end.ToString("yyyy-MM-dd");
+            var httpClient = _httpClientFactory.CreateClient("CurrencyApi");
+            var httpResponse = await httpClient.GetAsync(url);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+            var currencyRates = JsonConvert.DeserializeObject<CurrencyRates>(json);
+
+            return currencyRates;
         }
 
         private async Task<MetalPrices> GetMetalPrices(Metal metal, DateTime start, DateTime end)
