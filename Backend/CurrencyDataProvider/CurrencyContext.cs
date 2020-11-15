@@ -22,7 +22,7 @@ namespace CurrencyDataProvider
 
             modelBuilder.Entity<USD_EUR>()
                 .HasKey(e => e.Date);
-            //.HasNoKey(); //EF bug !!!!
+                //.HasNoKey(); //EF bug !!!!
 
             modelBuilder.Entity<EUR_AUD>()
                 .HasKey(e => e.Date);
