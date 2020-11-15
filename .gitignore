@@ -86,3 +86,5 @@
 /Backend/CommonReadModel/bin/Debug/netcoreapp3.1
 /Backend/CurrencyReadModel/obj
 /Backend/CurrencyReadModel/bin/Debug/netcoreapp3.1
+/Backend/CurrencyDatabaseGenerator/bin/Debug/netcoreapp3.1
+/Backend/CurrencyDatabaseGenerator/obj

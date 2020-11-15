@@ -13,11 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalReadModel", "MetalRead
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyApi", "CurrencyApi\CurrencyApi.csproj", "{CA8AADC7-5507-4E0F-965A-927712F67A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyReadModel", "CurrencyReadModel\CurrencyReadModel.csproj", "{983334AF-0D9D-4D12-8661-38D699853E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyReadModel", "CurrencyReadModel\CurrencyReadModel.csproj", "{983334AF-0D9D-4D12-8661-38D699853E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonReadModel", "CommonReadModel\CommonReadModel.csproj", "{63791890-4E58-4F26-9652-92F652BA96CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonReadModel", "CommonReadModel\CommonReadModel.csproj", "{63791890-4E58-4F26-9652-92F652BA96CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadModel", "ReadModel", "{A4CA083F-9DEE-4696-9449-1329A4C56FD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CurrencyData", "CurrencyData", "{7BF435E9-880B-45B7-B576-7F70BBAF188E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyDatabaseGenerator", "CurrencyDatabaseGenerator\CurrencyDatabaseGenerator.csproj", "{77E484C0-B65B-4720-97DB-1FF97915AC49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,14 +57,20 @@ Global
 		{63791890-4E58-4F26-9652-92F652BA96CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63791890-4E58-4F26-9652-92F652BA96CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63791890-4E58-4F26-9652-92F652BA96CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{39B48D94-BF43-4B2B-A76D-2F31372064AE} = {7BF435E9-880B-45B7-B576-7F70BBAF188E}
 		{0C05E756-08C3-4DEC-8E78-CB29F0E75929} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
 		{983334AF-0D9D-4D12-8661-38D699853E13} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
 		{63791890-4E58-4F26-9652-92F652BA96CE} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
+		{77E484C0-B65B-4720-97DB-1FF97915AC49} = {7BF435E9-880B-45B7-B576-7F70BBAF188E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BBD821D-8436-44FD-B96E-89C06CF2D116}

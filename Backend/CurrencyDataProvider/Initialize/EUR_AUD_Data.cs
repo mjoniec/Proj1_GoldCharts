@@ -1,22 +1,12 @@
-﻿using CurrencyDataProvider.DbModel;
-using CurrencyReadModel;
+﻿using CurrencyReadModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CurrencyDataProvider.Initialize
 {
-    public static class EUR_AUD_Initialize
+    public static class EUR_AUD_Data
     {
-        public static void Initialize(CurrencyContext context)
-        {
-            context.EUR_AUD.AddRange(
-                Generate()
-                    .Select(l => new EUR_AUD { Date = l.Date, Value = l.Value })
-                    .ToList());
-        }
-
-        public static List<CurrencyRateDate> Generate()
+        public static List<CurrencyRateDate> Get()
         {
             return new List<CurrencyRateDate>
             {

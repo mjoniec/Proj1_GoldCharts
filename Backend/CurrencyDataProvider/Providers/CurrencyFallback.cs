@@ -19,16 +19,16 @@ namespace CurrencyDataProvider.Providers
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = USD_AUD_Initialize
-                    .Generate()
+                exchangeRates.Rates = USD_AUD_Data
+                    .Get()
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
             }
 
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.USD)
             {
-                exchangeRates.Rates = USD_AUD_Initialize
-                    .Generate()
+                exchangeRates.Rates = USD_AUD_Data
+                    .Get()
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
 
@@ -37,16 +37,16 @@ namespace CurrencyDataProvider.Providers
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.EUR)
             {
-                exchangeRates.Rates = USD_EUR_Initialize
-                    .Generate()
+                exchangeRates.Rates = USD_EUR_Data
+                    .Get()
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
             }
 
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.USD)
             {
-                exchangeRates.Rates = USD_EUR_Initialize
-                    .Generate()
+                exchangeRates.Rates = USD_EUR_Data
+                    .Get()
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
 
@@ -55,16 +55,16 @@ namespace CurrencyDataProvider.Providers
 
             if (baseCurrency == Currency.EUR && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = EUR_AUD_Initialize
-                    .Generate()
+                exchangeRates.Rates = EUR_AUD_Data
+                    .Get()
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
             }
 
             if (baseCurrency == Currency.AUD && rateCurrency == Currency.EUR)
             {
-                exchangeRates.Rates = EUR_AUD_Initialize
-                    .Generate()
+                exchangeRates.Rates = EUR_AUD_Data
+                    .Get()
                     .Where(c => c.Date >= start && c.Date <= end)
                     .ToList();
 
