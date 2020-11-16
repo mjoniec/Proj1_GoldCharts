@@ -1,6 +1,5 @@
 ﻿using CommonReadModel;
 using CurrencyReadModel;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +10,8 @@ namespace CurrencyDataProvider.Providers
     {
         private readonly CurrencyContext _context;
 
-        public CurrencyRepository(IServiceProvider serviceProvider, IConfiguration configuration)
+        public CurrencyRepository(IServiceProvider serviceProvider)
         {
-            var connectionStringsOptions = new ConnectionStringsOptions();
-
-            configuration
-                .GetSection(ConnectionStringsOptions.ConnectionStrings)
-                .Bind(connectionStringsOptions);
-
             _context = (CurrencyContext) serviceProvider.GetService(typeof(CurrencyContext));
         }
 

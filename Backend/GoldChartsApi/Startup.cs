@@ -19,31 +19,30 @@ namespace GoldChartsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //TODO: fallback for DB an proper DI for services
-            //services.AddDbContext<CurrencyContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddScoped<ICurrenciesRepository, CurrenciesRepository>();
-            //services.AddScoped<ICurrencyProvider, CurrencyFallback>();
-
-            //services.AddScoped<IMetalsPricesProvider, GuandlMetalsPricesProvider>();
-            //services.AddScoped<IMetalsPricesProvider, FallbackMetalsPricesProvider>();
-
-
             services.AddControllers();            
             services.AddScoped<CombineCurrencyAndMetalDataService>();
 
-            
-            //TODO: servie names and url to configs, add dev prod etc...
-            services.AddHttpClient("MetalApi", client =>
+            var metalApiOptions = new MetalApiOptions();
+
+            Configuration
+                .GetSection(MetalApiOptions.MetalApi)
+                .Bind(metalApiOptions);
+
+            services.AddHttpClient(MetalApiOptions.MetalApi, client =>
             {
-                client.BaseAddress = new Uri("http://localhost:57365/api/metal/");
+                client.BaseAddress = new Uri(metalApiOptions.Url);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 
-            services.AddHttpClient("CurrencyApi", client =>
+            var currencyApiOptions = new CurrencyApiOptions();
+
+            Configuration
+                .GetSection(CurrencyApiOptions.CurrencyApi)
+                .Bind(currencyApiOptions);
+
+            services.AddHttpClient(CurrencyApiOptions.CurrencyApi, client =>
             {
-                client.BaseAddress = new Uri("http://localhost:54782/api/currency/");
+                client.BaseAddress = new Uri(currencyApiOptions.Url);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
         }
@@ -51,14 +50,7 @@ namespace GoldChartsApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-
-            //app.UseHttpsRedirection();
             app.UseRouting();
-            //app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

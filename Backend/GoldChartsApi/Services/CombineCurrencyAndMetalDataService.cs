@@ -70,7 +70,7 @@ namespace GoldChartsApi.Services
         private async Task<CurrencyRates> GetCurrencyRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)
         {
             var url = baseCurrency.ToString() + "/" + rateCurrency.ToString() + "/" + start.ToString("yyyy-MM-dd") + "/" + end.ToString("yyyy-MM-dd");
-            var httpClient = _httpClientFactory.CreateClient("CurrencyApi");
+            var httpClient = _httpClientFactory.CreateClient(CurrencyApiOptions.CurrencyApi);
             var httpResponse = await httpClient.GetAsync(url);
             var json = await httpResponse.Content.ReadAsStringAsync();
             var currencyRates = JsonConvert.DeserializeObject<CurrencyRates>(json);
@@ -81,7 +81,7 @@ namespace GoldChartsApi.Services
         private async Task<MetalPrices> GetMetalPrices(Metal metal, DateTime start, DateTime end)
         {
             var url = metal.ToString() + "/" + start.ToString("yyyy-MM-dd") + "/" + end.ToString("yyyy-MM-dd");
-            var httpClient = _httpClientFactory.CreateClient("MetalApi");
+            var httpClient = _httpClientFactory.CreateClient(MetalApiOptions.MetalApi);
             var httpResponse = await httpClient.GetAsync(url);
             var json = await httpResponse.Content.ReadAsStringAsync();
             var metalPrices = JsonConvert.DeserializeObject<MetalPrices>(json);

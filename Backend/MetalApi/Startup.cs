@@ -37,8 +37,7 @@ namespace MetalApi
 
             services.AddHttpClient("QuandlService", client =>
             {
-                //client.BaseAddress = new Uri("https://www.quandl.com/api/v3/datasets/");
-                client.BaseAddress = new Uri("https://www.quandl.com/api/v3/xxx/");//wrong url for tests
+                client.BaseAddress = new Uri("https://www.quandl.com/api/v3/datasets/");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             })
             .AddPolicyHandler(httpFallback.FallbackPolicy);
