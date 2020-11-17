@@ -1,6 +1,6 @@
 ﻿using CurrencyDataProvider;
 using CurrencyDataProvider.DbModel;
-using CurrencyDataProvider.Initialize;
+using CurrencyDataProvider.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

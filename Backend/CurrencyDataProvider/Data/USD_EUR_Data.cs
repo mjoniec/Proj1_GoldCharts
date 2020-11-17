@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CurrencyDataProvider.Initialize
+namespace CurrencyDataProvider.Data
 {
     public static class USD_EUR_Data
     {
