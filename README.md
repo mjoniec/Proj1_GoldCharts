@@ -3,6 +3,7 @@
 ## GoldCharts API
 
 https://localhost:44314/api/GoldCharts/USD/Silver/2000-1-1/2005-1-1
+
 https://localhost:44314/api/GoldCharts/AUD/Gold/2000-1-1/2005-1-1
 
 ## Currency API
