@@ -6,14 +6,14 @@ using System.Text;
 
 namespace GoldChartsApi.Model
 {
-    internal class MetalCurrencyCombined
+    public class MetalCurrencyCombined
     {
-        internal Currency Currency { get; set; }
-        internal Metal Metal { get; set; }
-        internal DateTime Start { get; set; }
-        internal DateTime End { get; set; }
-        internal MetalPrices MetalPrices { get; set; }
-        internal CurrencyRates CurrencyRates { get; set; }
-        internal StringBuilder OperationStatus { get; set; }
+        public Currency Currency { get; set; }
+        public Metal Metal { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public MetalPrices MetalPrices { get; set; }
+        public CurrencyRates CurrencyRates { get; set; }
+        public StringBuilder OperationStatus { get; set; }
     }
 }

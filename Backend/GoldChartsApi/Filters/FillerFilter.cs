@@ -10,7 +10,7 @@ namespace GoldChartsApi.Filters
     /// <summary>
     /// - fill any gaps in daily prices by copying last known value
     /// </summary>
-    internal class FillerFilter : IFilter
+    public class FillerFilter : IFilter
     {
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {
@@ -23,7 +23,7 @@ namespace GoldChartsApi.Filters
                     FillMissingDates(metalCurrencyCombined.CurrencyRates.Rates);
             }
 
-            return metalCurrencyCombined
+            return metalCurrencyCombined;
         }
 
         private List<MetalPriceDate> FillMissingDates(List<MetalPriceDate> valuesDates)
@@ -31,8 +31,7 @@ namespace GoldChartsApi.Filters
             return FillMissingDates(valuesDates
                 .Cast<ValueDate>()
                 .ToList())
-                .Cast<MetalPriceDate>()
-                .ToList();
+                .ConvertAll(c => c.As<MetalPriceDate>());
         }
 
         private List<CurrencyRateDate> FillMissingDates(List<CurrencyRateDate> valuesDates)
@@ -40,8 +39,7 @@ namespace GoldChartsApi.Filters
             return FillMissingDates(valuesDates
                 .Cast<ValueDate>()
                 .ToList())
-                .Cast<CurrencyRateDate>()
-                .ToList();
+                .ConvertAll(c => c.As<CurrencyRateDate>());
         }
 
         private List<ValueDate> FillMissingDates(List<ValueDate> valuesDates)

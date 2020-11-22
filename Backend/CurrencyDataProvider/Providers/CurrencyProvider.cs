@@ -6,7 +6,7 @@ namespace CurrencyDataProvider.Providers
 {
     public class CurrencyProvider : ICurrencyProvider
     {
-        private readonly IServiceProvider _serviceProvider;        
+        private readonly IServiceProvider _serviceProvider;
 
         public CurrencyProvider(IServiceProvider serviceProvider)
         {
@@ -28,7 +28,7 @@ namespace CurrencyDataProvider.Providers
                 currencyProvider = (ICurrencyProvider)_serviceProvider.GetService(typeof(CurrencyFallback));
 
                 return currencyProvider.GetExchangeRates(baseCurrency, rateCurrency, start, end);
-            }            
+            }
         }
     }
 }

@@ -3,11 +3,11 @@ using System;
 
 namespace GoldChartsApi.Filters
 {
-    //TODO: implement better data validation then throwing errors
+    //TODO: implement better data validation than error throwing
     /// <summary>
     /// - throws if metal or currency data not loaded as expected
     /// </summary>
-    internal class ValidatorFilter : IFilter
+    public class ValidatorFilter : IFilter
     {
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {

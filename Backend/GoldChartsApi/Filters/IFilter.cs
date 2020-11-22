@@ -2,7 +2,7 @@
 
 namespace GoldChartsApi.Filters
 {
-    internal interface IFilter
+    public interface IFilter
     {
         MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined);
     }

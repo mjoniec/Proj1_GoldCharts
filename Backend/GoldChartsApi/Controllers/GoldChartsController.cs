@@ -23,6 +23,7 @@ namespace GoldChartsApi.Controllers
         [HttpGet("{currency}/{metal}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //TODO: return model type declaration
         public async Task<IActionResult> Get(Currency currency, Metal metal, DateTime start, DateTime end)
         {
             var metalCurrencyCombined = await _metalCurrencyCombinatorPipe.GetMetalPricesInCurrency(currency, metal, start, end);

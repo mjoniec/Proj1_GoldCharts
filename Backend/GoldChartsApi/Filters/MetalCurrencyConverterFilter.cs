@@ -9,7 +9,7 @@ namespace GoldChartsApi.Filters
     /// <summary>
     /// - mesh metal and currency data to match requested currency and metal 
     /// </summary>
-    internal class MetalCurrencyConverterFilter : IFilter
+    public class MetalCurrencyConverterFilter : IFilter
     {
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {

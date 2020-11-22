@@ -14,7 +14,7 @@ namespace GoldChartsApi.Filters
     /// - get currency exchange rates data daily from http api
     /// - filter results by start end dates
     /// </summary>
-    internal class RequesterFilter : IFilter
+    public class RequesterFilter : IFilter
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

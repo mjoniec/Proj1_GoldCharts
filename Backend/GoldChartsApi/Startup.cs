@@ -1,5 +1,6 @@
 using System;
-using GoldChartsApi.Services;
+using GoldChartsApi.Filters;
+using GoldChartsApi.Pipe;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,10 +20,25 @@ namespace GoldChartsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();            
-            services.AddScoped<CombineCurrencyAndMetalDataService>();
+            services.AddControllers();
+            
+            services
+                .AddScoped<FillerFilter>()
+                .AddScoped<IFilter, FillerFilter>(s => s.GetService<FillerFilter>());
 
-            //TODO: add filters and pipe
+            services
+                .AddScoped<MetalCurrencyConverterFilter>()
+                .AddScoped<IFilter, MetalCurrencyConverterFilter>(s => s.GetService<MetalCurrencyConverterFilter>());
+
+            services
+                .AddScoped<RequesterFilter>()
+                .AddScoped<IFilter, RequesterFilter>(s => s.GetService<RequesterFilter>());
+
+            services
+                .AddScoped<ValidatorFilter>()
+                .AddScoped<IFilter, ValidatorFilter>(s => s.GetService<ValidatorFilter>());
+
+            services.AddScoped<MetalCurrencyCombinatorPipe>();
 
             var metalApiOptions = new MetalApiOptions();
 
