@@ -22,6 +22,8 @@ namespace GoldChartsApi
             services.AddControllers();            
             services.AddScoped<CombineCurrencyAndMetalDataService>();
 
+            //TODO: add filters and pipe
+
             var metalApiOptions = new MetalApiOptions();
 
             Configuration
