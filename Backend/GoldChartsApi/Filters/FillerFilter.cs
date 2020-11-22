@@ -2,6 +2,7 @@
 using CurrencyReadModel;
 using GoldChartsApi.Model;
 using MetalReadModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,45 +15,59 @@ namespace GoldChartsApi.Filters
     {
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {
-            metalCurrencyCombined.MetalPrices.Prices = 
-                FillMissingDates(metalCurrencyCombined.MetalPrices.Prices);
+            var metalPricesFilled =
+                FillMissingDates(metalCurrencyCombined.MetalPrices.Prices,
+                    metalCurrencyCombined.Start, metalCurrencyCombined.End);
 
-            if (metalCurrencyCombined.CurrencyRates == null)
+            metalCurrencyCombined.MetalPrices.Prices = metalPricesFilled;
+
+            if (metalCurrencyCombined.CurrencyRates != null)
             {
-                metalCurrencyCombined.CurrencyRates.Rates = 
-                    FillMissingDates(metalCurrencyCombined.CurrencyRates.Rates);
+                var currencyRatesFilled =
+                    FillMissingDates(metalCurrencyCombined.CurrencyRates.Rates,
+                        metalCurrencyCombined.Start, metalCurrencyCombined.End);
+
+                metalCurrencyCombined.CurrencyRates.Rates = currencyRatesFilled;
             }
 
             return metalCurrencyCombined;
         }
 
-        private List<MetalPriceDate> FillMissingDates(List<MetalPriceDate> valuesDates)
+        private List<MetalPriceDate> FillMissingDates(List<MetalPriceDate> valuesDates, 
+            DateTime start, DateTime end)
         {
             return FillMissingDates(valuesDates
                 .Cast<ValueDate>()
-                .ToList())
+                .ToList(), start, end)
                 .ConvertAll(c => c.As<MetalPriceDate>());
         }
 
-        private List<CurrencyRateDate> FillMissingDates(List<CurrencyRateDate> valuesDates)
+        private List<CurrencyRateDate> FillMissingDates(List<CurrencyRateDate> valuesDates, 
+            DateTime start, DateTime end)
         {
             return FillMissingDates(valuesDates
                 .Cast<ValueDate>()
-                .ToList())
+                .ToList(), start, end)
                 .ConvertAll(c => c.As<CurrencyRateDate>());
         }
 
-        private List<ValueDate> FillMissingDates(List<ValueDate> valuesDates)
+        private List<ValueDate> FillMissingDates(List<ValueDate> valuesDates,
+            DateTime start, DateTime end)
         {
             var list = new List<ValueDate>();
-            var values = valuesDates.OrderBy(v => v.Date).ToList();
-            var lastKnownValue = values.First().Value;
+            var lastKnownValue = valuesDates.OrderBy(v => v.Date).First().Value;
+            //var lastKnownValue = values.First().Value;
 
-            for (var date = values.First().Date; date <= values.Last().Date; date = date.AddDays(1))
+            //fills with first known value all preceding from start if they are not provided
+            //fills any daily gaps with last known value
+
+            for (var date = start.Date; date <= end.Date; date = date.AddDays(1))
             {
-                if (values.Any(l => l.Date.Date == date))
+                var vd = valuesDates.FirstOrDefault(l => l.Date.Date == date);
+
+                if(vd != null)
                 {
-                    lastKnownValue = values.First(l => l.Date.Date == date).Value;
+                    lastKnownValue = vd.Value;
                 }
 
                 list.Add(new ValueDate { Date = date, Value = lastKnownValue });

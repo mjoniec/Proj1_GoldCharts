@@ -1,6 +1,7 @@
 ﻿using CommonReadModel;
 using GoldChartsApi.Model;
 using MetalReadModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,12 @@ namespace GoldChartsApi.Filters
         {
             var metalPricesFilled = metalCurrencyCombined.MetalPrices.Prices.Cast<ValueDate>().ToList();
             var ratesFilled = metalCurrencyCombined.CurrencyRates.Rates.Cast<ValueDate>().ToList();
+
+            if (metalPricesFilled.Count != ratesFilled.Count)
+            {
+                throw new Exception("number of days for currency and metal not equal");
+            }
+
             var prices = new List<MetalPriceDate>();
 
             foreach (var p in metalPricesFilled)

@@ -34,10 +34,6 @@ namespace GoldChartsApi
                 .AddScoped<RequesterFilter>()
                 .AddScoped<IFilter, RequesterFilter>(s => s.GetService<RequesterFilter>());
 
-            services
-                .AddScoped<ValidatorFilter>()
-                .AddScoped<IFilter, ValidatorFilter>(s => s.GetService<ValidatorFilter>());
-
             services.AddScoped<MetalCurrencyCombinatorPipe>();
 
             var metalApiOptions = new MetalApiOptions();

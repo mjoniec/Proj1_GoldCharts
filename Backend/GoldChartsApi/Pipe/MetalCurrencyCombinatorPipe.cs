@@ -28,7 +28,6 @@ namespace GoldChartsApi.Pipe
             var filters = new List<IFilter>
             {
                 (IFilter)_serviceProvider.GetService(typeof(RequesterFilter)),
-                (IFilter)_serviceProvider.GetService(typeof(ValidatorFilter)),
                 (IFilter)_serviceProvider.GetService(typeof(FillerFilter)),
                 (IFilter)_serviceProvider.GetService(typeof(MetalCurrencyConverterFilter))
             };

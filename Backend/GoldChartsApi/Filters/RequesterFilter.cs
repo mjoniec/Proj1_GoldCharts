@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace GoldChartsApi.Filters
 {
     /// <summary>
-    /// - get metal prices data daily from http api
-    /// - get currency exchange rates data daily from http api
+    /// - get metal and currency data daily from http apis
     /// - filter results by start end dates
+    /// - throws if metal or currency data not loaded as expected
     /// </summary>
     public class RequesterFilter : IFilter
     {
@@ -25,6 +25,11 @@ namespace GoldChartsApi.Filters
 
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {
+            if(metalCurrencyCombined.Start >= metalCurrencyCombined.End)
+            {
+                throw new Exception("start date must be before end date");
+            }
+
             //unknow in which currency metal service is going to provide data
             metalCurrencyCombined.MetalPrices = GetMetalPrices(
                 metalCurrencyCombined.Metal, 
@@ -49,6 +54,18 @@ namespace GoldChartsApi.Filters
             else
             {
                 metalCurrencyCombined.OperationStatus.AppendLine("no need to load currency");
+            }
+
+            if (metalCurrencyCombined.MetalPrices == null)
+            {
+                throw new Exception("metal data not provided");
+            }
+
+            //currency exchange rates can be null if metal is already in expected currency
+            if (metalCurrencyCombined.MetalPrices.Currency != metalCurrencyCombined.Currency &&
+                metalCurrencyCombined.CurrencyRates == null)
+            {
+                throw new Exception("currency data not provided when needed");
             }
 
             return metalCurrencyCombined;
