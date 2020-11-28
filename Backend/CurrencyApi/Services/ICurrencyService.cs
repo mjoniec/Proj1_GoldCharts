@@ -2,9 +2,9 @@
 using CurrencyReadModel;
 using System;
 
-namespace CurrencyDataProvider.Providers
+namespace CurrencyApi.Services
 {
-    public interface ICurrencyProvider
+    public interface ICurrencyService
     {
         public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end);
     }

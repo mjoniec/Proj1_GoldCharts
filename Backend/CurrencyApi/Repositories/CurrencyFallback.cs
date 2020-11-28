@@ -4,9 +4,9 @@ using CurrencyReadModel;
 using System;
 using System.Linq;
 
-namespace CurrencyDataProvider.Providers
+namespace CurrencyApi.Repositories
 {
-    public class CurrencyFallback : ICurrencyProvider
+    public class CurrencyFallback : ICurrencyRepository
     {
         public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)
         {

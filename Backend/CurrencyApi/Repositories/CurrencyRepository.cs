@@ -1,18 +1,19 @@
 ﻿using CommonReadModel;
+using CurrencyDataProvider;
 using CurrencyReadModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CurrencyDataProvider.Providers
+namespace CurrencyApi.Repositories
 {
-    public class CurrencyRepository : ICurrencyProvider
+    public class CurrencyRepository : ICurrencyRepository
     {
         private readonly CurrencyContext _context;
 
         public CurrencyRepository(IServiceProvider serviceProvider)
         {
-            _context = (CurrencyContext) serviceProvider.GetService(typeof(CurrencyContext));
+            _context = (CurrencyContext)serviceProvider.GetService(typeof(CurrencyContext));
         }
 
         public CurrencyRates GetExchangeRates(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)

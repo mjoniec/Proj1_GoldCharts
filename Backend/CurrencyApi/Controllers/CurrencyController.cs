@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CommonReadModel;
-using CurrencyDataProvider.Providers;
+using CurrencyApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +11,11 @@ namespace CurrencyApi.Controllers
     [ApiController]
     public class CurrencyController : ControllerBase
     {
-        private readonly ICurrencyProvider _currencyProvider;
+        private readonly ICurrencyService _currencyService;
         
-        public CurrencyController(IServiceProvider serviceProvider)
+        public CurrencyController(ICurrencyService currencyService)
         {
-            _currencyProvider = (ICurrencyProvider)serviceProvider.GetService(typeof(CurrencyProvider));
+            _currencyService = currencyService;
         }
 
         //http://localhost:54782/api/currency/USD/EUR/2000-1-1/2005-1-1
@@ -23,7 +23,7 @@ namespace CurrencyApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get(Currency baseCurrency, Currency rateCurrency, DateTime start, DateTime end)
         {
-            var currencyRates = _currencyProvider.GetExchangeRates(baseCurrency, rateCurrency, start, end);
+            var currencyRates = _currencyService.GetExchangeRates(baseCurrency, rateCurrency, start, end);
 
             if (currencyRates == null)
             {
