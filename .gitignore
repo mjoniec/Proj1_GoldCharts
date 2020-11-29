@@ -88,3 +88,9 @@
 /Backend/CurrencyReadModel/bin/Debug/netcoreapp3.1
 /Backend/CurrencyDatabaseGenerator/bin/Debug/netcoreapp3.1
 /Backend/CurrencyDatabaseGenerator/obj
+/Backend/CurrencyApi/bin/Release/netcoreapp3.1
+/Backend/CurrencyDataProvider/bin/Release/netcoreapp3.1
+/Backend/CurrencyReadModel/bin/Release/netcoreapp3.1
+/Backend/CommonReadModel/bin/Release/netcoreapp3.1
+/Backend/CurrencyApi/.config
+/Backend/CurrencyApi/Properties/PublishProfiles
