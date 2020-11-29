@@ -4,6 +4,12 @@
 
 http://goldchartscurrencyapi.azurewebsites.net/api/Currency/USD/EUR/2000-1-1/2005-1-1
 
+
+## Metal API
+
+http://goldchartsmetalapi.azurewebsites.net/api/Metal/Gold/2000-1-1/2005-1-1
+
+
 # GoldCharts Development
 
 ## GoldCharts API
