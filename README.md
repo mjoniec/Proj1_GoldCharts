@@ -1,4 +1,10 @@
-# GoldCharts
+# GoldCharts Production
+
+## Currency API
+
+http://goldchartscurrencyapi.azurewebsites.net/api/Currency/USD/EUR/2000-1-1/2005-1-1
+
+# GoldCharts Development
 
 ## GoldCharts API
 
