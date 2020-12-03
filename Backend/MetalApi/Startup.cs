@@ -35,9 +35,15 @@ namespace MetalApi
                 .BuildServiceProvider()
                 .GetService<HttpFallback>();
 
-            services.AddHttpClient("QuandlService", client =>
+            var quandlApiOptions = new QuandlApiOptions();
+
+            Configuration
+                .GetSection(QuandlApiOptions.QuandlApi)
+                .Bind(quandlApiOptions);
+
+            services.AddHttpClient(QuandlApiOptions.QuandlApi, client =>
             {
-                client.BaseAddress = new Uri("https://www.quandl.com/api/v3/datasets/");
+                client.BaseAddress = new Uri(quandlApiOptions.Url);
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             })
             .AddPolicyHandler(httpFallback.FallbackPolicy);
