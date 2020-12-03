@@ -99,3 +99,5 @@
 /Backend/MetalApi/Properties/PublishProfiles/GoldChartsMetalApi - Web Deploy.pubxml
 /Backend/MetalApi/Properties/ServiceDependencies/GoldChartsMetalApi - Web Deploy/profile.arm.json
 /Backend/MetalReadModel/bin/Release/netcoreapp3.1
+/Backend/CurrencyDatabaseCommon/obj
+/Backend/CurrencyDatabaseCommon/bin/Debug/netcoreapp3.1

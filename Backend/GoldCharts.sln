@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldChartsApi", "GoldChartsApi\GoldChartsApi.csproj", "{28C25293-A11D-4E9C-8871-4CCA2677E0FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyDataProvider", "CurrencyDataProvider\CurrencyDataProvider.csproj", "{39B48D94-BF43-4B2B-A76D-2F31372064AE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalApi", "MetalApi\MetalApi.csproj", "{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetalReadModel", "MetalReadModel\MetalReadModel.csproj", "{0C05E756-08C3-4DEC-8E78-CB29F0E75929}"
@@ -21,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadModel", "ReadModel", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CurrencyData", "CurrencyData", "{7BF435E9-880B-45B7-B576-7F70BBAF188E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyDatabaseGenerator", "CurrencyDatabaseGenerator\CurrencyDatabaseGenerator.csproj", "{77E484C0-B65B-4720-97DB-1FF97915AC49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyDatabaseGenerator", "CurrencyDatabaseGenerator\CurrencyDatabaseGenerator.csproj", "{77E484C0-B65B-4720-97DB-1FF97915AC49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyDatabaseCommon", "CurrencyDatabaseCommon\CurrencyDatabaseCommon.csproj", "{0404CF05-7DFA-4252-BCDB-8D02984BC800}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{28C25293-A11D-4E9C-8871-4CCA2677E0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C25293-A11D-4E9C-8871-4CCA2677E0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C25293-A11D-4E9C-8871-4CCA2677E0FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39B48D94-BF43-4B2B-A76D-2F31372064AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E124BA-5C72-4A1B-8907-41CCC1DDB0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,16 +57,20 @@ Global
 		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77E484C0-B65B-4720-97DB-1FF97915AC49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0404CF05-7DFA-4252-BCDB-8D02984BC800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0404CF05-7DFA-4252-BCDB-8D02984BC800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0404CF05-7DFA-4252-BCDB-8D02984BC800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0404CF05-7DFA-4252-BCDB-8D02984BC800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{39B48D94-BF43-4B2B-A76D-2F31372064AE} = {7BF435E9-880B-45B7-B576-7F70BBAF188E}
 		{0C05E756-08C3-4DEC-8E78-CB29F0E75929} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
 		{983334AF-0D9D-4D12-8661-38D699853E13} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
 		{63791890-4E58-4F26-9652-92F652BA96CE} = {A4CA083F-9DEE-4696-9449-1329A4C56FD3}
 		{77E484C0-B65B-4720-97DB-1FF97915AC49} = {7BF435E9-880B-45B7-B576-7F70BBAF188E}
+		{0404CF05-7DFA-4252-BCDB-8D02984BC800} = {7BF435E9-880B-45B7-B576-7F70BBAF188E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BBD821D-8436-44FD-B96E-89C06CF2D116}

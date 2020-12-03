@@ -1,6 +1,6 @@
 using CurrencyApi.Repositories;
 using CurrencyApi.Services;
-using CurrencyDataProvider;
+using CurrencyDatabaseCommon;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

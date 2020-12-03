@@ -1,6 +1,6 @@
 ﻿using CurrencyReadModel;
 
-namespace CurrencyDataProvider.DbModel
+namespace CurrencyDatabaseCommon.DbModel
 {
     public class USD_AUD : CurrencyRateDate
     {

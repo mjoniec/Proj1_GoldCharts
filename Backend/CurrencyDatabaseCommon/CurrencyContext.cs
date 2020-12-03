@@ -1,7 +1,7 @@
-﻿using CurrencyDataProvider.DbModel;
+﻿using CurrencyDatabaseCommon.DbModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace CurrencyDataProvider
+namespace CurrencyDatabaseCommon
 {
     public class CurrencyContext : DbContext
     {
