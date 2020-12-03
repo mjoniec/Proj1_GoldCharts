@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonModel\CommonModel.csproj" />
     <ProjectReference Include="..\CurrencyDatabaseCommon\CurrencyDatabaseCommon.csproj" />
     <ProjectReference Include="..\CurrencyReadModel\CurrencyReadModel.csproj" />
   </ItemGroup>

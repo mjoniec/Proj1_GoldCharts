@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonReadModel\CommonReadModel.csproj" />
+    <ProjectReference Include="..\CommonModel\CommonModel.csproj" />
   </ItemGroup>
 
 </Project>

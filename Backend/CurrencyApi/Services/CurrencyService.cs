@@ -1,4 +1,4 @@
-﻿using CommonReadModel;
+﻿using CommonModel;
 using CurrencyApi.Repositories;
 using CurrencyReadModel;
 using System;

@@ -1,4 +1,4 @@
-﻿using CommonReadModel;
+﻿using CommonModel;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http;
 using System.Threading.Tasks;

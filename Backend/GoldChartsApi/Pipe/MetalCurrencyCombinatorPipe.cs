@@ -1,4 +1,4 @@
-﻿using CommonReadModel;
+﻿using CommonModel;
 using GoldChartsApi.Filters;
 using GoldChartsApi.Model;
 using System;

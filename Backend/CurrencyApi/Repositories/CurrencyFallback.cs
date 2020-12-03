@@ -1,4 +1,4 @@
-﻿using CommonReadModel;
+﻿using CommonModel;
 using CurrencyDatabaseCommon.Data;
 using CurrencyReadModel;
 using System;

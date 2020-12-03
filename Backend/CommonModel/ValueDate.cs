@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CommonReadModel
+namespace CommonModel
 {
     public class ValueDate
     {

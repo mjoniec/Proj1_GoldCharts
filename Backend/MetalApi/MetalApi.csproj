@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonReadModel\CommonReadModel.csproj" />
     <ProjectReference Include="..\MetalReadModel\MetalReadModel.csproj" />
   </ItemGroup>
 

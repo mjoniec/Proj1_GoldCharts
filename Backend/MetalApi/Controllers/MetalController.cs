@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System;
 using MetalApi.Providers;
 using MetalApi.GuandlModel;
-using CommonReadModel;
+using CommonModel;
 
 namespace MetalApi.Controllers
 {

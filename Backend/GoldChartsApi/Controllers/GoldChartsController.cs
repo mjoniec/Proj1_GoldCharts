@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using System;
-using CommonReadModel;
+using CommonModel;
 using GoldChartsApi.Pipe;
 
 namespace GoldChartsApi.Controllers

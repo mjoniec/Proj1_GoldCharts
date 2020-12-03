@@ -1,4 +1,4 @@
-﻿using CommonReadModel;
+﻿using CommonModel;
 using MetalReadModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

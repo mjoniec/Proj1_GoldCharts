@@ -1,4 +1,4 @@
-﻿namespace CommonReadModel
+﻿namespace CommonModel
 {
     public enum Metal
     {

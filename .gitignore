@@ -101,3 +101,5 @@
 /Backend/MetalReadModel/bin/Release/netcoreapp3.1
 /Backend/CurrencyDatabaseCommon/obj
 /Backend/CurrencyDatabaseCommon/bin/Debug/netcoreapp3.1
+/Backend/CommonModel/obj
+/Backend/CommonModel/bin/Debug/netcoreapp3.1

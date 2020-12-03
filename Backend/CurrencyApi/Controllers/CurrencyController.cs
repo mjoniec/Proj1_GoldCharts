@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CommonReadModel;
+using CommonModel;
 using CurrencyApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

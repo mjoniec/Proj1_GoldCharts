@@ -1,4 +1,4 @@
-﻿using CommonReadModel;
+﻿using CommonModel;
 using GoldChartsApi.Model;
 using System;
 using System.Collections.Generic;
