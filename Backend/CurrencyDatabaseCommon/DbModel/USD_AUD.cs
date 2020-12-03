@@ -1,8 +1,8 @@
-﻿using CurrencyReadModel;
+﻿using CommonReadModel;
 
 namespace CurrencyDatabaseCommon.DbModel
 {
-    public class USD_AUD : CurrencyRateDate
+    public class USD_AUD : ValueDate
     {
 
     }

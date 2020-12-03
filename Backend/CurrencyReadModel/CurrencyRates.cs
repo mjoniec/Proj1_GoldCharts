@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CommonReadModel;
+using System.Collections.Generic;
 
 namespace CurrencyReadModel
 {
@@ -10,6 +11,6 @@ namespace CurrencyReadModel
 
         public string RateCurrency { get; set; }
 
-        public List<CurrencyRateDate> Rates { get; set; }
+        public List<ValueDate> Rates { get; set; }
     }
 }

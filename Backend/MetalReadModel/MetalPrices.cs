@@ -7,6 +7,6 @@ namespace MetalReadModel
     {
         public DataSource DataSource { get; set; }
         public Currency Currency { get; set; }
-        public List<MetalPriceDate> Prices { get; set; }
+        public List<ValueDate> Prices { get; set; }
     }
 }

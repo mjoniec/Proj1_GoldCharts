@@ -1,7 +1,5 @@
 ﻿using CommonReadModel;
-using CurrencyReadModel;
 using GoldChartsApi.Model;
-using MetalReadModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,24 +29,6 @@ namespace GoldChartsApi.Filters
             }
 
             return metalCurrencyCombined;
-        }
-
-        private List<MetalPriceDate> FillMissingDates(List<MetalPriceDate> valuesDates, 
-            DateTime start, DateTime end)
-        {
-            return FillMissingDates(valuesDates
-                .Cast<ValueDate>()
-                .ToList(), start, end)
-                .ConvertAll(c => c.As<MetalPriceDate>());
-        }
-
-        private List<CurrencyRateDate> FillMissingDates(List<CurrencyRateDate> valuesDates, 
-            DateTime start, DateTime end)
-        {
-            return FillMissingDates(valuesDates
-                .Cast<ValueDate>()
-                .ToList(), start, end)
-                .ConvertAll(c => c.As<CurrencyRateDate>());
         }
 
         private List<ValueDate> FillMissingDates(List<ValueDate> valuesDates,

@@ -22,7 +22,7 @@ namespace GoldChartsApi.Filters
                 throw new Exception("number of days for currency and metal not equal");
             }
 
-            var prices = new List<MetalPriceDate>();
+            var prices = new List<ValueDate>();
 
             foreach (var p in metalPricesFilled)
             {
@@ -30,7 +30,7 @@ namespace GoldChartsApi.Filters
 
                 if (r == null) continue;
 
-                prices.Add(new MetalPriceDate
+                prices.Add(new ValueDate
                 {
                     Date = p.Date,
                     Value = p.Value * r.Value

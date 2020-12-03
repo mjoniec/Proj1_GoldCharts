@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyDatabaseCommon\CurrencyDatabaseCommon.csproj" />
+    <ProjectReference Include="..\CurrencyReadModel\CurrencyReadModel.csproj" />
   </ItemGroup>
 
 

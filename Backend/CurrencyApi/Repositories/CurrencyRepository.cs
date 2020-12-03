@@ -32,7 +32,7 @@ namespace CurrencyApi.Repositories
 
             if (baseCurrency == Currency.USD && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = new List<CurrencyRateDate>(
+                exchangeRates.Rates = new List<ValueDate>(
                     _context.USD_AUD.Where(c => c.Date >= start && c.Date <= end));
             }
 
@@ -44,12 +44,12 @@ namespace CurrencyApi.Repositories
 
                 AUD_USD.ForEach(e => e.Value = 1 / e.Value);
 
-                exchangeRates.Rates = new List<CurrencyRateDate>(AUD_USD);
+                exchangeRates.Rates = new List<ValueDate>(AUD_USD);
             }
 
             else if (baseCurrency == Currency.USD && rateCurrency == Currency.EUR)
             {
-                exchangeRates.Rates = new List<CurrencyRateDate>(_context.USD_EUR
+                exchangeRates.Rates = new List<ValueDate>(_context.USD_EUR
                     .Where(c => c.Date >= start && c.Date <= end));
             }
 
@@ -61,12 +61,12 @@ namespace CurrencyApi.Repositories
 
                 EUR_USD.ForEach(e => e.Value = 1 / e.Value);
 
-                exchangeRates.Rates = new List<CurrencyRateDate>(EUR_USD);
+                exchangeRates.Rates = new List<ValueDate>(EUR_USD);
             }
 
             else if (baseCurrency == Currency.EUR && rateCurrency == Currency.AUD)
             {
-                exchangeRates.Rates = new List<CurrencyRateDate>(_context.EUR_AUD
+                exchangeRates.Rates = new List<ValueDate>(_context.EUR_AUD
                     .Where(c => c.Date >= start && c.Date <= end));
             }
 
@@ -78,7 +78,7 @@ namespace CurrencyApi.Repositories
 
                 AUD_EUR.ForEach(e => e.Value = 1 / e.Value);
 
-                exchangeRates.Rates = new List<CurrencyRateDate>(AUD_EUR);
+                exchangeRates.Rates = new List<ValueDate>(AUD_EUR);
             }
 
             return exchangeRates;

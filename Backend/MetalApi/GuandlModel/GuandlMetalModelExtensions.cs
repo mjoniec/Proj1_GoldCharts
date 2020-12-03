@@ -1,4 +1,5 @@
-﻿using MetalReadModel;
+﻿using CommonReadModel;
+using MetalReadModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -24,7 +25,7 @@ namespace MetalApi.GuandlModel
                 //quite some internal know how here ... - refactor it somehow?
 
                 Prices = GetDailyGoldPricesFromExternalData(guandlMetalModel.Data)
-                    .Select(d => new MetalPriceDate
+                    .Select(d => new ValueDate
                     {
                         Date = d.Key,
                         Value = d.Value
@@ -37,10 +38,10 @@ namespace MetalApi.GuandlModel
                     : DataSource.GuandlApi,
                 
                 Currency = guandlMetalModel.Name.Contains("Silver")
-                    ? CommonReadModel.Currency.USD 
+                    ? Currency.USD 
                     : (guandlMetalModel.Name.Contains("Gold")
-                        ? CommonReadModel.Currency.AUD 
-                        : CommonReadModel.Currency.EUR)//this does not feel right
+                        ? Currency.AUD 
+                        : Currency.EUR)//this does not feel right
             };
         }
 
