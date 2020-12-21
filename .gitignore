@@ -103,3 +103,12 @@
 /Backend/CurrencyDatabaseCommon/bin/Debug/netcoreapp3.1
 /Backend/CommonModel/obj
 /Backend/CommonModel/bin/Debug/netcoreapp3.1
+/Backend/CurrencyDatabaseCommon/bin/Release/netcoreapp3.1/CurrencyDatabaseCommon.pdb
+/Backend/CurrencyDatabaseCommon/bin/Release/netcoreapp3.1/CurrencyDatabaseCommon.dll
+/Backend/CurrencyDatabaseCommon/bin/Release/netcoreapp3.1/CurrencyDatabaseCommon.deps.json
+/Backend/CurrencyDatabaseCommon/bin/Release/netcoreapp3.1/CommonModel.pdb
+/Backend/CurrencyDatabaseCommon/bin/Release/netcoreapp3.1/CommonModel.dll
+/Backend/CurrencyDatabaseCommon/bin/Release/netcoreapp3.1
+/Backend/CommonModel/bin/Release/netcoreapp3.1/CommonModel.pdb
+/Backend/CommonModel/bin/Release/netcoreapp3.1/CommonModel.dll
+/Backend/CommonModel/bin/Release/netcoreapp3.1/CommonModel.deps.json
