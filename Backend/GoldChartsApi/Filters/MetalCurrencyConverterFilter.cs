@@ -15,7 +15,7 @@ namespace GoldChartsApi.Filters
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {
             var metalPricesFilled = metalCurrencyCombined.MetalPrices.Prices.Cast<ValueDate>().ToList();
-            var ratesFilled = metalCurrencyCombined.CurrencyRates.Rates.Cast<ValueDate>().ToList();//TODO: null thrown here on localhost - investigate
+            var ratesFilled = metalCurrencyCombined.CurrencyRates.Rates.Cast<ValueDate>().ToList();//TODO: null thrown here on localhost - investigate https://localhost:44314/api/GoldCharts/USD/Silver/2000-1-1/2009-3-31
 
             if (metalPricesFilled.Count != ratesFilled.Count)
             {
