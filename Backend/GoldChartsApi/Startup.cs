@@ -27,7 +27,9 @@ namespace GoldChartsApi
                 options.AddPolicy("MyAllowedOrigins", builder =>
                 {
                     builder.WithOrigins(
-                        "http://localhost:4202"
+                        "http://localhost:4202",
+                        "http://goldchartsui.azurewebsites.net",
+                        "https://goldchartsui.azurewebsites.net"
                         );
                 });
             });
