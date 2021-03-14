@@ -15,7 +15,7 @@ namespace GoldChartsApi.Filters
         public MetalCurrencyCombined Execute(MetalCurrencyCombined metalCurrencyCombined)
         {
             var metalPricesFilled = metalCurrencyCombined.MetalPrices.Prices.Cast<ValueDate>().ToList();
-            var ratesFilled = metalCurrencyCombined.CurrencyRates.Rates.Cast<ValueDate>().ToList();
+            var ratesFilled = metalCurrencyCombined.CurrencyRates.Rates.Cast<ValueDate>().ToList();//TODO: null thrown here on localhost - investigate
 
             if (metalPricesFilled.Count != ratesFilled.Count)
             {

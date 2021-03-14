@@ -12,50 +12,49 @@ export class BasicSimpleComponent implements OnInit {
   html = require('!!html-loader?-minimize!./basic-simple.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-simple.component.ts').default; // DEMO IGNORE
   options: any;
-  goldUsd = [];
-  silverUsd = [];
-  xAxisData: any[];
-  data1: any[];
-  data2: any[];
+  
+  goldUsdJson = [];
+  silverUsdJson = [];
+
+  datesAll: any[];
+  goldUsdPricesAll: any[];
+  silverUsdPricesAll: any[];
 
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
 
     this.getGoldUsd().subscribe((dataGold: any[])=>{
-      console.log(dataGold);
-      this.goldUsd = dataGold;
+      //console.log(dataGold);
+      this.goldUsdJson = dataGold;
 
       this.getSilverUsd().subscribe((dataSilver: any[])=>{
-        console.log(dataSilver);
-        this.silverUsd = dataSilver;
+        //console.log(dataSilver);
+        this.silverUsdJson = dataSilver;
 
-        // const xAxisData = [];
-        //const data1 = [];
-        //const data2 = [];
+        this.datesAll = this.goldUsdJson['prices'].map(function(a) {return a.date;} );
+        this.goldUsdPricesAll = this.goldUsdJson['prices'].map(function(a) {return a.value;} );
+        this.silverUsdPricesAll = this.silverUsdJson['prices'].map(function(a) {return a.value;} );
 
-        this.xAxisData = this.goldUsd['prices'].map(function(a) {return a.date;});
-        this.data1 = this.goldUsd['prices'].map(function(a) {return a.value;});
-        this.data2 = this.silverUsd['prices'].map(function(a) {return a.value;});
-
-        //console.log(this.goldUsd['prices']);
-        //console.log(this.data1);
+        const takeEveryDay = 30;
+        const datesEvery30Day = [];
+        const goldUsdPricesEvery30Day = [];
+        const silverUsdPricesEvery30Day = [];
 
         for (let i = 0; i < 100; i++) {
-          //xAxisData.push('category' + i);
-          //data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 9) * 5);
-          //data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+          datesEvery30Day.push(this.datesAll[i * takeEveryDay]);
+          goldUsdPricesEvery30Day.push(this.goldUsdPricesAll[i * takeEveryDay]);
+          silverUsdPricesEvery30Day.push(this.silverUsdPricesAll[i * takeEveryDay]);
         }
 
         this.options = {
           legend: {
-            data: ['bar', 'bar2'],
+            data: ['gold usd', 'silver usd'],
             align: 'left',
           },
           tooltip: {},
           xAxis: {
-            // data: xAxisData,
-            data: this.xAxisData,
+            data: datesEvery30Day,
             silent: false,
             splitLine: {
               show: false,
@@ -64,17 +63,15 @@ export class BasicSimpleComponent implements OnInit {
           yAxis: {},
           series: [
             {
-              name: 'bar',
+              name: 'gold usd',
               type: 'bar',
-              // data: data1,
-              data: this.data1,
+              data: goldUsdPricesEvery30Day,
               animationDelay: (idx) => idx * 10,
             },
             {
-              name: 'bar2',
+              name: 'silver usd',
               type: 'bar',
-              // data: data2,
-              data: this.data2,
+              data: silverUsdPricesEvery30Day,
               animationDelay: (idx) => idx * 10 + 100,
             },
           ],
@@ -89,12 +86,12 @@ export class BasicSimpleComponent implements OnInit {
   }
 
   public getGoldUsd() {
-    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2000-3-31")
-    return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Gold/2000-1-1/2000-3-31") 
+    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31")
+    return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31") 
   }
 
   public getSilverUsd() {
-    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2000-3-31")
-    return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Silver/2000-1-1/2000-3-31") 
+    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31")
+    return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Silver/2000-1-1/2009-3-31") 
   }
 }
