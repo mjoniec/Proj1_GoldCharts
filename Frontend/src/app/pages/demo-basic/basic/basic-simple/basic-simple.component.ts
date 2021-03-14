@@ -74,12 +74,12 @@ export class BasicSimpleComponent implements OnInit {
   }
 
   public getGoldUsd() {
-    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31")
-    return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31") 
+    return this.httpClient.get("https://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31")
+    //return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31") 
   }
 
   public getGoldEUR() {
-    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/EUR/Gold/2000-1-1/2009-3-31")
-    return this.httpClient.get("https://localhost:44314/api/GoldCharts/EUR/Gold/2000-1-1/2009-3-31") 
+    return this.httpClient.get("https://goldchartsapi.azurewebsites.net/api/GoldCharts/EUR/Gold/2000-1-1/2009-3-31")
+    //return this.httpClient.get("https://localhost:44314/api/GoldCharts/EUR/Gold/2000-1-1/2009-3-31") 
   }
 }
