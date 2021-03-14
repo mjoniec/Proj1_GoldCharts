@@ -38,6 +38,8 @@ http://localhost:57365/api/metal/Gold/2000-1-1/2005-1-1
 - npm install
 - npm run demo
 
+## Build 2
+
 - ng build
 - ng serve
 
