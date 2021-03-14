@@ -11,10 +11,6 @@ export class BasicSimpleComponent implements OnInit {
   html = require('!!html-loader?-minimize!./basic-simple.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-simple.component.ts').default; // DEMO IGNORE
   options: any;
-  
-  goldUsdJson = [];
-  goldEurJson = [];
-
   datesAll: any[];
   goldUsdPricesAll: any[];
   goldEurPricesAll: any[];
@@ -23,17 +19,12 @@ export class BasicSimpleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getGoldUsd().subscribe((dataGold: any[])=>{
-      //console.log(dataGold);
-      this.goldUsdJson = dataGold;
+    this.getGoldUsd().subscribe((goldUsdJson: any[])=>{
+      this.getGoldEUR().subscribe((goldEurJson: any[])=>{
 
-      this.getGoldEUR().subscribe((dataSilver: any[])=>{
-        //console.log(dataSilver);
-        this.goldEurJson = dataSilver;
-
-        this.datesAll = this.goldUsdJson['prices'].map(function(a) {return a.date;} );
-        this.goldUsdPricesAll = this.goldUsdJson['prices'].map(function(a) {return a.value;} );
-        this.goldEurPricesAll = this.goldEurJson['prices'].map(function(a) {return a.value;} );
+        this.datesAll = goldUsdJson['prices'].map(function(a) {return a.date;} );
+        this.goldUsdPricesAll = goldUsdJson['prices'].map(function(a) {return a.value;} );
+        this.goldEurPricesAll = goldEurJson['prices'].map(function(a) {return a.value;} );
 
         const takeEveryDay = 30;
         const datesEvery30Day = [];

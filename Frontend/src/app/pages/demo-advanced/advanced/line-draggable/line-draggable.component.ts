@@ -1,89 +1,102 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as util from 'zrender/lib/core/util';
+import { HttpClient } from '@angular/common/http';
 
 declare const require: any; // DEMO IGNORE
 
 const SymbolSize = 2;
-const Data = [
-  [15, 0],
-  [-50, 10],
-  [-56.5, 20],
-  [-46.5, 30],
-  [-22.1, 40],
-];
+const Data = [];
 
 @Component({
   selector: 'app-line-draggable',
   templateUrl: './line-draggable.component.html',
   styleUrls: ['./line-draggable.component.scss'],
 })
-export class LineDraggableComponent implements OnDestroy {
+export class LineDraggableComponent implements OnInit, OnDestroy {
   html = require('!!html-loader?-minimize!./line-draggable.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./line-draggable.component.ts').default; // DEMO IGNORE
+  options: any;
   updatePosition: () => void;
-  options = {
-    title: {
-      text: 'Try Dragging these Points',
-    },
-    tooltip: {
-      triggerOn: 'none',
-      formatter: (params) =>
-        'X: ' + params.data[0].toFixed(2) + '<br>Y: ' + params.data[1].toFixed(2),
-    },
-    grid: {},
-    xAxis: {
-      min: -100,
-      max: 80,
-      type: 'value',
-      axisLine: { onZero: false },
-    },
-    yAxis: {
-      min: -30,
-      max: 60,
-      type: 'value',
-      axisLine: { onZero: false },
-    },
-    dataZoom: [
-      {
-        type: 'slider',
-        xAxisIndex: 0,
-        filterMode: 'empty',
-      },
-      {
-        type: 'slider',
-        yAxisIndex: 0,
-        filterMode: 'empty',
-      },
-      {
-        type: 'inside',
-        xAxisIndex: 0,
-        filterMode: 'empty',
-      },
-      {
-        type: 'inside',
-        yAxisIndex: 0,
-        filterMode: 'empty',
-      },
-    ],
-    series: [
-      {
-        id: 'a',
-        type: 'line',
-        smooth: true,
-        symbolSize: SymbolSize,
-        data: Data,
-      },
-    ],
-  };
-  constructor() {}
+  goldUsdPricesAll: any[];
+
+  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit(): void {
+    this.getGoldUsd().subscribe((dataGold: any[])=>{
+      this.goldUsdPricesAll = dataGold['prices'].map(function(a) {return a.value;} );
+
+      for (let i = 0; i < 3000; i++) {
+        var tmpArray = [];
+        tmpArray.push(i);
+        tmpArray.push(this.goldUsdPricesAll[i]);
+        Data.push(tmpArray);
+      }
+
+      this.options = {
+        title: {
+          text: 'Try Dragging these Points',
+        },
+        tooltip: {
+          triggerOn: 'none',
+          formatter: (params) =>
+            'X: ' + params.data[0].toFixed(2) + '<br>Y: ' + params.data[1].toFixed(2),
+        },
+        grid: {},
+        xAxis: {
+          min: 0,
+          max: 3000,
+          type: 'value',
+          axisLine: { onZero: false },
+        },
+        yAxis: {
+          min: 0,
+          max: 1000,
+          type: 'value',
+          axisLine: { onZero: false },
+        },
+        dataZoom: [
+          {
+            type: 'slider',
+            xAxisIndex: 0,
+            filterMode: 'empty',
+          },
+          {
+            type: 'slider',
+            yAxisIndex: 0,
+            filterMode: 'empty',
+          },
+          {
+            type: 'inside',
+            xAxisIndex: 0,
+            filterMode: 'empty',
+          },
+          {
+            type: 'inside',
+            yAxisIndex: 0,
+            filterMode: 'empty',
+          },
+        ],
+        series: [
+          {
+            id: 'a',
+            type: 'line',
+            smooth: true,
+            symbolSize: SymbolSize,
+            data: Data,
+          },
+        ],
+      }
+    });
+  }
 
   ngOnDestroy() {
     if (this.updatePosition) {
       window.removeEventListener('resize', this.updatePosition);
     }
   }
-
+  
   onChartReady(myChart: any) {
+
     const onPointDragging = function(dataIndex) {
       Data[dataIndex] = myChart.convertFromPixel({ gridIndex: 0 }, this.position) as number[];
 
@@ -147,5 +160,10 @@ export class LineDraggableComponent implements OnDestroy {
         }),
       });
     }, 0);
+  }//onChartReady
+  
+  public getGoldUsd() {
+    // return this.httpClient.get("http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31")
+    return this.httpClient.get("https://localhost:44314/api/GoldCharts/USD/Gold/2000-1-1/2009-3-31") 
   }
 }
