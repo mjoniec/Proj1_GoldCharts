@@ -21,7 +21,17 @@ namespace GoldChartsApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyAllowedOrigins", builder =>
+                {
+                    builder.WithOrigins(
+                        "http://localhost:4202"
+                        );
+                });
+            });
+
             services
                 .AddScoped<FillerFilter>()
                 .AddScoped<IFilter, FillerFilter>(s => s.GetService<FillerFilter>());
@@ -65,6 +75,7 @@ namespace GoldChartsApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
+            app.UseCors("MyAllowedOrigins");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

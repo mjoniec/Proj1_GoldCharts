@@ -3,7 +3,7 @@ import * as util from 'zrender/lib/core/util';
 
 declare const require: any; // DEMO IGNORE
 
-const SymbolSize = 20;
+const SymbolSize = 2;
 const Data = [
   [15, 0],
   [-50, 10],

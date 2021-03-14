@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System;
 using CommonModel;
 using GoldChartsApi.Pipe;
+using Microsoft.AspNetCore.Cors;
 
 namespace GoldChartsApi.Controllers
 {
@@ -20,6 +21,7 @@ namespace GoldChartsApi.Controllers
 
         //https://localhost:44314/api/GoldCharts/USD/Silver/2000-1-1/2005-1-1
         //https://localhost:44314/api/GoldCharts/AUD/Gold/2000-1-1/2005-1-1
+        [EnableCors("MyAllowedOrigins")]
         [HttpGet("{currency}/{metal}/{start}/{end}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
