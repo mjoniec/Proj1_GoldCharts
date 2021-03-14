@@ -1,3 +1,8 @@
+## UI Client
+
+- Production - https://goldchartsui.azurewebsites.net
+- localhost - http://localhost:4202/
+
 ## GoldCharts Production
 
 GoldCharts API
@@ -27,3 +32,7 @@ http://localhost:54782/api/currency/USD/EUR/2000-1-1/2005-1-1
 Metal API
 
 http://localhost:57365/api/metal/Gold/2000-1-1/2005-1-1
+
+## Deployment
+
+https://levelup.gitconnected.com/deploy-angular-application-on-azure-web-service-960e441bb13d
