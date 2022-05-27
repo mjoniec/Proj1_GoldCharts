@@ -112,3 +112,5 @@
 /Backend/CommonModel/bin/Release/netcoreapp3.1/CommonModel.pdb
 /Backend/CommonModel/bin/Release/netcoreapp3.1/CommonModel.dll
 /Backend/CommonModel/bin/Release/netcoreapp3.1/CommonModel.deps.json
+/.vs
+/Backend/.vs/GoldCharts/v17
