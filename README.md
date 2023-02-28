@@ -1,5 +1,9 @@
 # GoldCharts
 
+GoldCharts UI (separate repo)
+
+- https://goldchartsui.azurewebsites.net/
+
 GoldCharts API
 
 - http://goldchartsapi.azurewebsites.net/api/GoldCharts/USD/Gold/2000-1-1/2005-1-1
